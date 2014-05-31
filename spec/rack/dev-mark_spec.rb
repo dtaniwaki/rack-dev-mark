@@ -11,10 +11,12 @@ describe Rack::DevMark do
     ENV['RAILS_ENV'] = @rails_env
   end
   it "returns nil" do
+    ENV['RAILS_ENV'] = nil
     ENV['RACK_ENV'] = nil
     expect(subject.env).to eq(nil)
   end
   it "returns rack_env" do
+    ENV['RAILS_ENV'] = nil
     ENV['RACK_ENV'] = 'abc'
     expect(subject.env).to eq('abc')
   end
