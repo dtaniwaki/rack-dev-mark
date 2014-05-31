@@ -22,12 +22,7 @@ Add the rack-dev-mark gem to your Gemfile.
 gem "rack-dev-mark"
 ```
 
-And run `bundle install`. The rest of the installation depends on
-whether the asset pipeline is being used.
-
-Then, initialize planbcd.
-
-## Usage
+And run `bundle install`.
 
 ### For your Rack app
 
