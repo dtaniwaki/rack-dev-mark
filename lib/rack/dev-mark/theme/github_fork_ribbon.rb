@@ -11,7 +11,7 @@ module Rack
 <!--[if lt IE 9]>
 #{stylesheet_link_tag "github-fork-ribbon-css/gh-fork-ribbon.ie.css"}
 <![endif]-->
-<div class="github-fork-ribbon-wrapper left" id="github-fork-ribbon" onClick="this.style.display='none'"><div class="github-fork-ribbon"><span class="github-fork-ribbon-text" target="_blank">#{env}</span></div></div>
+<div class="github-fork-ribbon-wrapper left" onClick="this.style.display='none'"><div class="github-fork-ribbon"><span class="github-fork-ribbon-text">#{env}</span></div></div>
           EOS
           html.sub %r{(<body[^>]*>)}i, "\\1#{s.strip}"
         end

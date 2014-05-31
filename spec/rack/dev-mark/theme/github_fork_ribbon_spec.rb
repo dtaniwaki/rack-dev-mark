@@ -8,7 +8,7 @@ describe Rack::DevMark::Theme::GithubForkRibbon do
 <!--[if lt IE 9]>
 <style>#{read_stylesheet "github-fork-ribbon-css/gh-fork-ribbon.ie.css"}</style>
 <![endif]-->
-<div class="github-fork-ribbon-wrapper left"><div class="github-fork-ribbon"><a href="https://github.com/simonwhitaker/github-fork-ribbon-css" class="github-fork-ribbon-text" target="_blank">env</a></div></div>body</body></html>
+<div class="github-fork-ribbon-wrapper left" onClick="this.style.display='none'"><div class="github-fork-ribbon"><span class="github-fork-ribbon-text">env</span></div></div>body</body></html>
       EOS
       s.strip
     end
