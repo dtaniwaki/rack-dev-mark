@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/rack-dev-mark.svg)](http://badge.fury.io/rb/rack-dev-mark) [![Build Status](https://secure.travis-ci.org/dtaniwaki/rack-dev-mark.png?branch=master)](http://travis-ci.org/dtaniwaki/rack-dev-mark) [![Coverage Status](https://coveralls.io/repos/dtaniwaki/rack-dev-mark/badge.png?branch=master)](https://coveralls.io/r/dtaniwaki/rack-dev-mark?branch=master)
 
-Differenciate development environment from production.
+Differentiate development environment from production.
 
 ## Screenshot
 
