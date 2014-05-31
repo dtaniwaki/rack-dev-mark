@@ -36,6 +36,7 @@
   text-decoration: none;
   text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
   text-align: center;
+  cursor: pointer;
 
   /* Set the geometry. If you fiddle with these you'll also need
      to tweak the top and right values in .github-fork-ribbon. */
