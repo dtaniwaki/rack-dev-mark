@@ -1,4 +1,7 @@
 require 'spec_helper'
+
+if !!Gem.loaded_specs["rails"]
+
 require 'rails'
 require 'rack/dev-mark/railtie'
 
@@ -27,4 +30,6 @@ describe Rack::DevMark::Railtie do
       expect(app.middleware.middlewares).not_to include(Rack::DevMark::Middleware)
     end
   end
+end
+
 end

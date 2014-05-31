@@ -1,0 +1,6 @@
+source "http://rubygems.org"
+
+gem 'rack', '~> 1.1.0'
+gemspec :path => '../'
+
+dependencies.delete_if { |dep| dep.name == 'rails' }
