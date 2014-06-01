@@ -12,5 +12,21 @@ module Rack
     def self.env
       ENV['RAILS_ENV'] || ENV['RACK_ENV']
     end
+
+    def self.production_env
+      @production_env ||= ['production']
+    end
+
+    def self.production_env=(*production_env)
+      @production_env = production_env.flatten.map(&:to_s)
+    end
+
+    def self.theme
+      @theme ||= :github_fork_ribbon
+    end
+
+    def self.theme=(theme)
+      @theme = theme
+    end
   end
 end

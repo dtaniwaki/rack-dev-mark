@@ -36,15 +36,7 @@ run MyApp
 
 This gem inserts rack middleware for all the environment except production automatically.
 
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new [Pull Request](../../pull/new/master)
-
-### Use custom theme
+## Custom Theme
 
 Define a sub class of `Rack::DevMark::Theme::Base` somewhere in your app.
 
@@ -61,22 +53,37 @@ end
 
 Then, insert it in your app.
 
-For your Rack app
+### For your Rack app
 
 ```ruby
 use Rack::DevMark::Middleware, Rack::DevMark::Theme::NewTheme.new
 ```
 
-For your Rails app
+### For your Rails app
 
-```ruby:config/application.rb
-module MyApp
-  class Application < Rails::Application
-    config.middleware.delete Rack::DevMark::Middleware
-    config.middleware.use Rack::DevMark::Middleware, NewTheme.new
-  end
-end
+```ruby:application.rb
+Rack::DevMark.theme = NewTheme.new
 ```
+
+## Production Environment
+
+You can change production environment name.
+
+### For your Rails app
+
+```ruby:application.rb
+Rack::DevMark.production_env = [:demo, :production]
+```
+
+Then the mark won't show up on demo and production environments.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new [Pull Request](../../pull/new/master)
 
 ## Copyright
 
