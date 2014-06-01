@@ -20,25 +20,26 @@ describe Rack::DevMark::Railtie do
     Rails.application = nil
   end
 
-  context "development env" do
-    it "adds rack middleware" do
+  context "test env" do
+    let(:env) { 'test' }
+    it "adds middleware" do
       expect(app.middleware.middlewares).to include(Rack::DevMark::Middleware)
     end
     context "production_env has test" do
       let(:production_env) { 'test' }
-      it "does not add rack middleware" do
+      it "does not add middleware" do
         expect(app.middleware.middlewares).not_to include(Rack::DevMark::Middleware)
       end
     end
   end
   context "production env" do
     let(:env) { 'production' }
-    it "does not add rack middleware" do
+    it "does not add middleware" do
       expect(app.middleware.middlewares).not_to include(Rack::DevMark::Middleware)
     end
     context "production_env has abc" do
       let(:production_env) { :abc }
-      it "does not add rack middleware" do
+      it "adds middleware" do
         expect(app.middleware.middlewares).to include(Rack::DevMark::Middleware)
       end
     end
