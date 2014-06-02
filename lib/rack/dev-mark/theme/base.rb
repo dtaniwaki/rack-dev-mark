@@ -6,7 +6,7 @@ module Rack
           raise RuntimeError, 'Abstract class can not be instantiated' if self.class == Rack::DevMark::Theme::Base
         end
 
-        def insert_into(html, env)
+        def insert_into(html, env, revision)
 
         end
 

@@ -33,8 +33,8 @@ module Rack
         response.each do |r|
           body.concat r.to_s
         end
-        body = @title.insert_into(body, Rack::DevMark.env)
-        body = @theme.insert_into(body, Rack::DevMark.env)
+        body = @title.insert_into(body, Rack::DevMark.env, Rack::DevMark.revision)
+        body = @theme.insert_into(body, Rack::DevMark.env, Rack::DevMark.revision)
         [body]
       end
     end

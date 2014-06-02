@@ -9,7 +9,7 @@ describe Rack::DevMark::Title do
     let (:src) { %Q~<html><head>head</head><body>body</body></html>~ }
     let (:out) { %Q~<html><head>head</head><body>body</body></html>~ }
     it "does not insert anything" do
-      expect(subject.insert_into(src, 'env')).to eq(src)
+      expect(subject.insert_into(src, 'env', 'rev')).to eq(src)
     end
   end
 end

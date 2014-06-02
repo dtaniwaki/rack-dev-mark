@@ -9,7 +9,11 @@ require 'rack/dev-mark/version'
 module Rack
   module DevMark
     def self.env
-      ENV['RAILS_ENV'] || ENV['RACK_ENV']
+      @env ||= ENV['RAILS_ENV'] || ENV['RACK_ENV']
+    end
+
+    def self.revision
+      @revision ||= (::File.open('REVISION') { |f| f.read.strip } rescue nil)
     end
   end
 end

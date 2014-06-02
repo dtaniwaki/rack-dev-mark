@@ -5,6 +5,6 @@ RSpec.shared_examples "theme" do
 
   let (:src) { %Q~<html><head>head<title>title</title></head><body>body</body></html>~ }
   it "insert env mark" do
-    expect(subject.insert_into(src, 'env')).to eq(out)
+    expect(subject.insert_into(src, 'env', 'rev')).to eq(out)
   end
 end

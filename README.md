@@ -54,7 +54,7 @@ Define a sub class of `Rack::DevMark::Theme::Base` somewhere in your app.
 require 'rack/dev-mark/theme/base'
 
 class NewTheme < Rack::DevMark::Theme::Base
-  def insert_into(html, env)
+  def insert_into(html, env, revision)
     # Do something for your theme
     html
   end
