@@ -56,12 +56,12 @@ Then, insert it in your app.
 ### For your Rack app
 
 ```ruby
-use Rack::DevMark::Middleware, Rack::DevMark::Theme::NewTheme.new
+use Rack::DevMark::Middleware, NewTheme.new
 ```
 
 ### For your Rails app
 
-```ruby:application.rb
+```ruby:config/application.rb
 Rack::DevMark.theme = NewTheme.new
 ```
 
@@ -71,8 +71,8 @@ You can change production environment name.
 
 ### For your Rails app
 
-```ruby:application.rb
-Rack::DevMark.production_env = [:demo, :production]
+```ruby:config/application.rb
+Rack::DevMark.production_env = ['demo', 'production']
 ```
 
 Then the mark won't show up on demo and production environments.
