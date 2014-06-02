@@ -26,7 +26,7 @@ And run `bundle install`.
 
 ### For your Rack app
 
-```ruby:config.ru
+```ruby
 require 'rack/dev-mark'
 use Rack::DevMark::Middleware
 run MyApp
@@ -34,7 +34,17 @@ run MyApp
 
 ### For your Rails app
 
-This gem inserts rack middleware for all the environment except production automatically.
+In `config/application.rb`
+
+```ruby
+module MyApp
+  class Application < Rails::Application
+    if !%w(production).include?(Rails.env)
+      config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::DevMark::Middleware
+    end
+  end
+end
+```
 
 ## Custom Theme
 
@@ -61,21 +71,17 @@ use Rack::DevMark::Middleware, NewTheme.new
 
 ### For your Rails app
 
-```ruby:config/application.rb
-Rack::DevMark.theme = NewTheme.new
+In `config/application.rb`
+
+```ruby
+module MyApp
+  class Application < Rails::Application
+    if !%w(production).include?(Rails.env)
+      config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::DevMark::Middleware, NewTheme.new
+    end
+  end
+end
 ```
-
-## Production Environment
-
-You can change production environment name.
-
-### For your Rails app
-
-```ruby:config/application.rb
-Rack::DevMark.production_env = ['demo', 'production']
-```
-
-Then the mark won't show up on demo and production environments.
 
 ## Contributing
 
