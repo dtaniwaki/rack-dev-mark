@@ -24,7 +24,7 @@ module Rack
               $stderr.write "Failed to insert dev marks: #{e.message}\n"
             end
           end
-          new_body.close if response.respond_to?(:close)
+          response.close if response.respond_to?(:close)
           headers['Content-Length'] &&= bytesize(new_body).to_s
           response = [new_body]
         end
