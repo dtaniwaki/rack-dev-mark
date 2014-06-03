@@ -16,11 +16,17 @@ module Rack
         headers = HeaderHash.new(headers)
 
         if headers['Content-Type'].to_s =~ %r{^text/html;}i
-          begin
-            response = insert_dev_marks(response)
-          rescue Rack::DevMark::Exception => e
-            $stderr.write "Failed to insert dev marks: #{e.message}\n"
+          new_body = ''
+          response.each do |b|
+            begin
+              new_body << insert_dev_marks(b)
+            rescue Rack::DevMark::Exception => e
+              $stderr.write "Failed to insert dev marks: #{e.message}\n"
+            end
           end
+          new_body.close if response.respond_to?(:close)
+          headers['Content-Length'] &&= bytesize(new_body).to_s
+          response = [new_body]
         end
 
         [status, headers, response]
@@ -28,14 +34,10 @@ module Rack
 
       private
 
-      def insert_dev_marks(response)
-        body = ""
-        response.each do |r|
-          body.concat r.to_s
-        end
+      def insert_dev_marks(body)
         body = @title.insert_into(body, Rack::DevMark.env, Rack::DevMark.revision)
         body = @theme.insert_into(body, Rack::DevMark.env, Rack::DevMark.revision)
-        [body]
+        body
       end
     end
   end
