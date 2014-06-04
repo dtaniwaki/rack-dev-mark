@@ -29,6 +29,22 @@
   pointer-events: auto;
 }
 
+.github-fork-ribbon.red {
+  background-color: #a00;
+}
+
+.github-fork-ribbon.green {
+  background-color: #090;
+}
+
+.github-fork-ribbon.black {
+  background-color: #333;
+}
+
+.github-fork-ribbon.orange {
+  background-color: #f80;
+}
+
 .github-fork-ribbon .github-fork-ribbon-text,
 .github-fork-ribbon .github-fork-ribbon-text:hover {
   /* Set the text properties */
