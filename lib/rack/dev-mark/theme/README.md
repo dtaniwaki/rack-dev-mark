@@ -14,3 +14,4 @@ https://github.com/simonwhitaker/github-fork-ribbon-css
 
 `color`: red (default), orange, green, black
 
+`fixed`: `true` or `false`(default)
