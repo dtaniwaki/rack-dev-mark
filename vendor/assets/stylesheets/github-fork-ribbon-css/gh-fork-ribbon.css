@@ -27,6 +27,15 @@
 
   z-index: 9999;
   pointer-events: auto;
+
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.github-fork-ribbon:hover {
+  opacity: 0.2;
 }
 
 .github-fork-ribbon.red {
