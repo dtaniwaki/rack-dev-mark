@@ -2,7 +2,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/rack-dev-mark.svg)](http://badge.fury.io/rb/rack-dev-mark) [![Build Status](https://secure.travis-ci.org/dtaniwaki/rack-dev-mark.png?branch=master)](http://travis-ci.org/dtaniwaki/rack-dev-mark) [![Coverage Status](https://coveralls.io/repos/dtaniwaki/rack-dev-mark/badge.png?branch=master)](https://coveralls.io/r/dtaniwaki/rack-dev-mark?branch=master)
 
-Differentiate development environment from production. You can choose [themes](lib/rack/dev-mark/theme/README.md)
+Differentiate development environment from production.
+You can choose [themes](lib/rack/dev-mark/theme/README.md) to differentiate the page.
 
 ## Screenshot
 
@@ -39,14 +40,30 @@ In `config/application.rb`
 ```ruby
 module MyApp
   class Application < Rails::Application
-    if !%w(production).include?(Rails.env)
+    if Rails.env != 'production'
       config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::DevMark::Middleware
     end
   end
 end
 ```
 
-The middleware sets title and github_fork_ribbon themes as default.
+The middleware sets [title](lib/rack/dev-mark/theme/title) and [github_fork_ribbon](lib/rack/dev-mark/theme/github_fork_ribbon.rb) themes as default.
+
+#### Exclude Multiple Environments in Rails
+
+Show the dev mark except env1, env2, env3.
+
+In `config/application.rb`
+
+```ruby
+module MyApp
+  class Application < Rails::Application
+    if !%w(env1 env2 env3).include?(Rails.env)
+      config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::DevMark::Middleware
+    end
+  end
+end
+```
 
 ## Custom Theme
 
