@@ -102,7 +102,7 @@ In `config/application.rb`
 ```ruby
 module MyApp
   class Application < Rails::Application
-    if !%w(production).include?(Rails.env)
+    if Rails.env != 'production'
       config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::DevMark::Middleware, [NewTheme.new, AnotherTheme.new]
     end
   end
