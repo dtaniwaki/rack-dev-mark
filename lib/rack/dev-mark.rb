@@ -1,7 +1,6 @@
 require 'rack'
 require 'rack/dev-mark/error'
 require 'rack/dev-mark/utils'
-require 'rack/dev-mark/title'
 require 'rack/dev-mark/theme'
 require 'rack/dev-mark/middleware'
 require 'rack/dev-mark/version'

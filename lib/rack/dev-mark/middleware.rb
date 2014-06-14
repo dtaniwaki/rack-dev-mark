@@ -4,10 +4,11 @@ module Rack
       include Rack::Utils
       include Rack::DevMark::Utils
 
-      def initialize(app, theme = :github_fork_ribbon)
+      def initialize(app, themes = [:title, :github_fork_ribbon])
         @app = app
-        @title = Rack::DevMark::Title.new
-        @theme = theme.is_a?(Symbol) ? Rack::DevMark::Theme.const_get(camelize(theme.to_s)).new : theme
+        @themes = [themes].flatten.map do |theme|
+          theme.is_a?(Symbol) ? Rack::DevMark::Theme.const_get(camelize(theme.to_s)).new : theme
+        end
       end
       
       def call(env)
@@ -37,8 +38,9 @@ module Rack
       private
 
       def insert_dev_marks(body)
-        body = @title.insert_into(body, Rack::DevMark.env, Rack::DevMark.revision)
-        body = @theme.insert_into(body, Rack::DevMark.env, Rack::DevMark.revision)
+        @themes.each do |theme|
+          body = theme.insert_into(body, Rack::DevMark.env, Rack::DevMark.revision)
+        end
         body
       end
     end
