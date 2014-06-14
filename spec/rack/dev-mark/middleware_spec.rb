@@ -3,14 +3,13 @@ require 'spec_helper'
 describe Rack::DevMark::Middleware do
   let(:headers) { {'Content-Type' => 'text/html; charset=utf-8'} }
   let(:body) { ['response'] }
-  let(:theme) { Class.new(Rack::DevMark::Theme::Base).new }
+  let(:theme) { d = double; allow(d).to receive(:insert_into){ |b, _, _| "#{b} dev-mark" }; d }
   let(:app) { double call: [200, headers, body] }
   subject { Rack::DevMark::Middleware.new(app, theme) }
   before do
     allow(Rack::DevMark).to receive(:env).and_return('test')
     allow(Rack::DevMark).to receive(:revision).and_return('rev')
-    allow_any_instance_of(Rack::DevMark::Title).to receive(:insert_into){ |body, _, _| "title #{body}" }
-    allow(theme).to receive(:insert_into){ |body, _, _| "#{body} dev-mark" }
+    allow_any_instance_of(Rack::DevMark::Title).to receive(:insert_into){ |_, (b, _, _)| "title #{b}" }
   end
 
   it "inserts dev mark" do
