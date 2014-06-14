@@ -18,6 +18,10 @@ describe Rack::DevMark::Middleware do
     expect(headers).to include('Content-Type' => 'text/html; charset=utf-8')
     expect(body).to eq(["title response dev-mark"])
   end
+  it "adds http headers" do
+    _, headers, _ = subject.call({})
+    expect(headers).to include('X-Rack-Dev-Mark-Env' => 'test')
+  end
   context "not html request" do
     let(:headers) { {'Content-Type' => 'application/json;'} }
     let(:body) { ['{}'] }

@@ -15,6 +15,8 @@ module Rack
 
         headers = HeaderHash.new(headers)
 
+        headers['X-Rack-Dev-Mark-Env'] = Rack::DevMark.env
+
         if headers['Content-Type'].to_s =~ %r{^text/html;}i
           new_body = ''
           response.each do |b|
