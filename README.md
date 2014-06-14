@@ -47,7 +47,7 @@ module MyApp
 end
 ```
 
-The middleware sets [title](lib/rack/dev-mark/theme/title) and [github_fork_ribbon](lib/rack/dev-mark/theme/github_fork_ribbon.rb) themes as default.
+The middleware sets [title](lib/rack/dev-mark/theme/title.rb) and [github_fork_ribbon](lib/rack/dev-mark/theme/github_fork_ribbon.rb) themes as default.
 
 #### Exclude Multiple Environments in Rails
 
