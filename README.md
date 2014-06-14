@@ -46,6 +46,8 @@ module MyApp
 end
 ```
 
+The middleware sets title and github_fork_ribbon themes as default.
+
 ## Custom Theme
 
 Define a sub class of `Rack::DevMark::Theme::Base` somewhere in your app.
@@ -59,6 +61,13 @@ class NewTheme < Rack::DevMark::Theme::Base
     html
   end
 end
+
+class AnotherTheme < Rack::DevMark::Theme::Base
+  def insert_into(html, env, revision)
+    # Do something for your theme
+    html
+  end
+end
 ```
 
 Then, insert it in your app.
@@ -66,7 +75,7 @@ Then, insert it in your app.
 ### For your Rack app
 
 ```ruby
-use Rack::DevMark::Middleware, NewTheme.new
+use Rack::DevMark::Middleware, [NewTheme.new, AnotherTheme.new]
 ```
 
 ### For your Rails app
@@ -77,11 +86,13 @@ In `config/application.rb`
 module MyApp
   class Application < Rails::Application
     if !%w(production).include?(Rails.env)
-      config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::DevMark::Middleware, NewTheme.new
+      config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::DevMark::Middleware, [NewTheme.new, AnotherTheme.new]
     end
   end
 end
 ```
+
+You can add any combination of themes.
 
 ## Contributing
 
