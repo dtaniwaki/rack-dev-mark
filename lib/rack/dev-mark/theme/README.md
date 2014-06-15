@@ -8,6 +8,12 @@ e.g.
 
 `My Homepage` on development env will be `(development) My Homepage`
 
+### options
+
+`type`: `prefix` (default) or `postfix`
+
+`upcase`: `true` or `false` (default)
+
 ## github-fork-ribbon
 
 ["Fork Me on GitHub" like ribbon](https://github.com/simonwhitaker/github-fork-ribbon-css) originally created by [simonwhitaker](https://github.com/simonwhitaker)
