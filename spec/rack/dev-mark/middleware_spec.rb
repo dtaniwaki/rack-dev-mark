@@ -57,4 +57,13 @@ describe Rack::DevMark::Middleware do
       expect(body).to eq(['{}'])
     end
   end
+  context "themes raise exceptions" do
+    before do
+      allow(theme).to receive(:insert_into).and_raise('something happened')
+    end
+    it "does not raise an exception but write it down in $stderr" do
+      expect($stderr).to receive(:write).with(/something happened/)
+      subject.call({})
+    end
+  end
 end
