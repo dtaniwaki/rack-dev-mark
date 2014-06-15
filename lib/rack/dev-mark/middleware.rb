@@ -25,7 +25,7 @@ module Rack
           response.each do |b|
             begin
               new_body << insert_dev_marks(b)
-            rescue Rack::DevMark::Exception => e
+            rescue => e
               $stderr.write "Failed to insert dev marks: #{e.message}\n"
             end
           end
