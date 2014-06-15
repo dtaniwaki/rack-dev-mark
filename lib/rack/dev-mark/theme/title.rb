@@ -1,3 +1,5 @@
+require 'rack/dev-mark/theme/base'
+
 module Rack
   module DevMark
     module Theme
