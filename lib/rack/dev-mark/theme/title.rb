@@ -1,13 +1,13 @@
 module Rack
   module DevMark
     module Theme
-      class Title
+      class Title < Base
         def initialize(options = {})
           @options = options
         end
 
-        def insert_into(html, env, revision)
-          s = env
+        def insert_into(html)
+          s = env.to_s
           s = s.upcase if @options[:upcase]
           if @options[:type].to_s == 'postfix'
             html.sub %r{(</title[^>]*>)}i, " (#{s})\\1"

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Rack::DevMark::Theme::GithubForkRibbon do
+  include_context "theme context"
   it_behaves_like "theme" do
     let :out do
       s = <<-EOS

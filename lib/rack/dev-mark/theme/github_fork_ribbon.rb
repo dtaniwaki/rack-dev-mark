@@ -9,7 +9,7 @@ module Rack
           @options = options
         end
 
-        def insert_into(html, env, revision)
+        def insert_into(html)
           position = @options[:position] || 'left'
           color = @options[:color] || 'red'
           fixed = @options[:fixed] ? ' fixed' : ''

@@ -7,7 +7,9 @@ module Rack
       def initialize(app, themes = [:title, :github_fork_ribbon])
         @app = app
         @themes = [themes].flatten.map do |theme|
-          theme.is_a?(Symbol) ? Rack::DevMark::Theme.const_get(camelize(theme.to_s)).new : theme
+          theme = theme.is_a?(Symbol) ? Rack::DevMark::Theme.const_get(camelize(theme.to_s)).new : theme
+          theme.setup Rack::DevMark.env, Rack::DevMark.revision
+          theme
         end
       end
       
@@ -39,7 +41,7 @@ module Rack
 
       def insert_dev_marks(body)
         @themes.each do |theme|
-          body = theme.insert_into(body, Rack::DevMark.env, Rack::DevMark.revision)
+          body = theme.insert_into(body)
         end
         body
       end
