@@ -54,6 +54,13 @@ module MyApp
 end
 ```
 
+Or
+Alternatively, use generator
+
+```bash
+bundle exec rails g rack-dev-mark:install
+```
+
 The middleware sets [title](lib/rack/dev-mark/theme/title.rb) and [github_fork_ribbon](lib/rack/dev-mark/theme/github_fork_ribbon.rb) themes as default.
 
 #### Exclude Multiple Environments in Rails
