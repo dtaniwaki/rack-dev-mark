@@ -17,4 +17,4 @@ module Rack
   end
 end
 
-require 'rack/dev-mark/railties' if defined?(Rails)
+require 'rack/dev-mark/railtie' if defined?(Rails)
