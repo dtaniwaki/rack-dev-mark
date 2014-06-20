@@ -35,14 +35,21 @@ run MyApp
 
 ### For your Rails app
 
+In `config/environments/development.rb`
+
+```ruby
+MyApp::Application.configure do
+  config.rack_dev_mark.enable = true
+end
+```
+
+Or
 In `config/application.rb`
 
 ```ruby
 module MyApp
   class Application < Rails::Application
-    if Rails.env != 'production'
-      config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::DevMark::Middleware
-    end
+    config.rack_dev_mark.enable = !Rails.env.production?
   end
 end
 ```
@@ -58,9 +65,7 @@ In `config/application.rb`
 ```ruby
 module MyApp
   class Application < Rails::Application
-    if !%w(env1 env2 env3).include?(Rails.env)
-      config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::DevMark::Middleware
-    end
+    config.rack_dev_mark.enable = !%w(env1 env2 env3).include?(Rails.env)
   end
 end
 ```
@@ -73,14 +78,14 @@ Define a sub class of `Rack::DevMark::Theme::Base` somewhere in your app.
 require 'rack/dev-mark/theme/base'
 
 class NewTheme < Rack::DevMark::Theme::Base
-  def insert_into(html, env, revision)
+  def insert_into(html)
     # Do something for your theme
     html
   end
 end
 
 class AnotherTheme < Rack::DevMark::Theme::Base
-  def insert_into(html, env, revision)
+  def insert_into(html)
     # Do something for your theme
     html
   end
@@ -102,9 +107,7 @@ In `config/application.rb`
 ```ruby
 module MyApp
   class Application < Rails::Application
-    if Rails.env != 'production'
-      config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::DevMark::Middleware, [NewTheme.new, AnotherTheme.new]
-    end
+    config.rack_dev_mark.custom_theme = [NewTheme.new, AnotherTheme.new]
   end
 end
 ```
