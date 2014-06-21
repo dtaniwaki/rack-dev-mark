@@ -99,7 +99,7 @@ class AnotherTheme < Rack::DevMark::Theme::Base
 end
 ```
 
-Then, insert it in your app.
+Then, insert them in your app.
 
 ### For your Rack app
 

@@ -1,5 +1,25 @@
 # Theme
 
+You can set options when you add the themes into your app. Otherwise, just put the symbol of the theme filename.
+
+### For your Rack app
+
+```ruby
+use Rack::DevMark::Middleware, [:title, Rack::DevMark::Theme::GithubForkRibbon.new(position: 'right')]
+```
+
+### For your Rails app
+
+In config/application.rb
+
+```ruby
+module MyApp
+  class Application < Rails::Application
+    config.rack_dev_mark.custom_theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(position: 'right')]
+  end
+end
+```
+
 ## title
 
 Just add the environment into the page title.
