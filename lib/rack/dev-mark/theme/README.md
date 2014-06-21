@@ -15,7 +15,7 @@ In config/application.rb
 ```ruby
 module MyApp
   class Application < Rails::Application
-    config.rack_dev_mark.custom_theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(position: 'right')]
+    config.rack_dev_mark.theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(position: 'right')]
   end
 end
 ```

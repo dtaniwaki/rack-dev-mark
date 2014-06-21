@@ -114,7 +114,7 @@ In `config/application.rb`
 ```ruby
 module MyApp
   class Application < Rails::Application
-    config.rack_dev_mark.custom_theme = [NewTheme.new, AnotherTheme.new]
+    config.rack_dev_mark.theme = [NewTheme.new, AnotherTheme.new]
   end
 end
 ```
