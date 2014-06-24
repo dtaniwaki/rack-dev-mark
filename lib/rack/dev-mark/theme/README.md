@@ -2,20 +2,20 @@
 
 You can set options when you add the themes into your app. Otherwise, just put the symbol of the theme filename.
 
-### For your Rack app
+### For Rack App
 
 ```ruby
 use Rack::DevMark::Middleware, [:title, Rack::DevMark::Theme::GithubForkRibbon.new(position: 'right')]
 ```
 
-### For your Rails app
+### For Rails App
 
 In config/application.rb
 
 ```ruby
 module MyApp
   class Application < Rails::Application
-    config.rack_dev_mark.custom_theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(position: 'right')]
+    config.rack_dev_mark.theme = [:title, Rack::DevMark::Theme::GithubForkRibbon.new(position: 'right')]
   end
 end
 ```
@@ -34,11 +34,11 @@ e.g.
 
 `upcase`: `true` or `false` (default)
 
-## github-fork-ribbon
+## github_fork_ribbon
 
 ["Fork Me on GitHub" like ribbon](https://github.com/simonwhitaker/github-fork-ribbon-css) originally created by [simonwhitaker](https://github.com/simonwhitaker)
 
-![github-fork-ribbon](screenshots/github_fork_ribbon.png)
+![github_fork_ribbon](screenshots/github_fork_ribbon.png)
 
 ### options
 

@@ -25,7 +25,7 @@ gem "rack-dev-mark"
 
 And run `bundle install`.
 
-### For your Rack app
+### For Rack App
 
 ```ruby
 require 'rack/dev-mark'
@@ -33,7 +33,7 @@ use Rack::DevMark::Middleware
 run MyApp
 ```
 
-### For your Rails app
+### For Rails App
 
 In `config/environments/development.rb`
 
@@ -79,7 +79,7 @@ end
 
 ## Custom Theme
 
-Define a sub class of `Rack::DevMark::Theme::Base` somewhere in your app.
+Create your own theme class inheriting `Rack::DevMark::Theme::Base`.
 
 ```ruby
 require 'rack/dev-mark/theme/base'
@@ -101,25 +101,25 @@ end
 
 Then, insert them in your app.
 
-### For your Rack app
+### For Rack App
 
 ```ruby
 use Rack::DevMark::Middleware, [NewTheme.new, AnotherTheme.new]
 ```
 
-### For your Rails app
+### For Rails App
 
 In `config/application.rb`
 
 ```ruby
 module MyApp
   class Application < Rails::Application
-    config.rack_dev_mark.custom_theme = [NewTheme.new, AnotherTheme.new]
+    config.rack_dev_mark.theme = [NewTheme.new, AnotherTheme.new]
   end
 end
 ```
 
-You can add any combination of themes.
+You can add any combination of themes. See more about [themes](lib/rack/dev-mark/theme/README.md).
 
 ## Contributing
 
