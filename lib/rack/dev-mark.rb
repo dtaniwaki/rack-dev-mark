@@ -8,7 +8,7 @@ require 'rack/dev-mark/version'
 module Rack
   module DevMark
     def self.env
-      @env ||= ENV['RAILS_ENV'] || ENV['RACK_ENV']
+      @env ||= ENV['RAILS_ENV'] || ENV['RACK_ENV'] || 'development'
     end
 
     def self.revision

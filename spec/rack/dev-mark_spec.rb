@@ -12,10 +12,10 @@ describe Rack::DevMark do
     subject.instance_variable_set("@env", nil)
   end
   describe "::env" do 
-    it "returns nil" do
+    it "returns development as default" do
       ENV['RAILS_ENV'] = nil
       ENV['RACK_ENV'] = nil
-      expect(subject.env).to eq(nil)
+      expect(subject.env).to eq('development')
     end
     it "returns rack_env" do
       ENV['RAILS_ENV'] = nil
