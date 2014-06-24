@@ -1,3 +1,4 @@
+require 'rails/generators'
 require 'rails/generators/base'
 
 module Rack
@@ -7,7 +8,7 @@ module Rack
 
       desc "Install rack-dev-mark."
       def insert_enable
-        insert_into_file 'config/application.rb', after: "< Rails::Application\n" do <<-EOS
+        insert_into_file target_path, after: "< Rails::Application\n" do <<-EOS
     # Enable rack-dev-mark
     config.rack_dev_mark.enable = !Rails.env.production?
     # Customize themes if you want to do so
@@ -15,6 +16,12 @@ module Rack
 
         EOS
         end
+      end
+
+      private
+
+      def target_path
+        'config/application.rb'
       end
     end
   end
