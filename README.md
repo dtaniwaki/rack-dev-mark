@@ -7,13 +7,15 @@ You can choose [themes](lib/rack/dev-mark/theme/README.md) to differentiate the 
 
 ## Screenshot
 
-### Development
+![screenshot development](misc/screenshot.gif)
 
-![screenshot development](screenshot-development.png)
+### On Development Env
 
-### Production
+![screenshot development](misc/screenshot-development.png)
 
-![screenshot production](screenshot-production.png)
+### On Production Env
+
+![screenshot production](misc/screenshot-production.png)
 
 ## Installation
 
