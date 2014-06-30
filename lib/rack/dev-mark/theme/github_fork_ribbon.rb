@@ -13,6 +13,8 @@ module Rack
           position = @options[:position] || 'left'
           color = @options[:color] || 'red'
           fixed = @options[:fixed] ? ' fixed' : ''
+          env = @options[:env] || self.env
+          revision = @options[:revision] || self.revision
           s = <<-EOS
 #{stylesheet_link_tag "github-fork-ribbon-css/gh-fork-ribbon.css"}
 <!--[if lt IE 9]>
