@@ -11,8 +11,16 @@ module Rack
       @env ||= ENV['RAILS_ENV'] || ENV['RACK_ENV'] || 'development'
     end
 
+    def self.env=(env)
+      @env = env
+    end
+
     def self.revision
       @revision ||= (::File.open('REVISION') { |f| f.read.strip } rescue nil)
+    end
+
+    def self.revision=(revision)
+      @revision = revision
     end
   end
 end

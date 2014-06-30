@@ -11,7 +11,7 @@ describe Rack::DevMark do
     ENV['RAILS_ENV'] = @rails_env
     subject.instance_variable_set("@env", nil)
   end
-  describe "::env" do 
+  describe "::env" do
     it "returns development as default" do
       ENV['RAILS_ENV'] = nil
       ENV['RACK_ENV'] = nil
@@ -28,6 +28,12 @@ describe Rack::DevMark do
       expect(subject.env).to eq('def')
     end
   end
+  describe "::env=" do
+    it "sets custom env" do
+      Rack::DevMark.env = 'custom'
+      expect(Rack::DevMark.env).to eq('custom')
+    end
+  end
   describe "::revision" do
     after do
       ::File.delete('REVISION') if ::File.exists?('REVISION')
@@ -41,6 +47,12 @@ describe Rack::DevMark do
     end
     it "returns nil if REVISION does not exist" do
       expect(subject.revision).to eq(nil)
+    end
+  end
+  describe "::revision=" do
+    it "sets custom revision" do
+      Rack::DevMark.revision = 'custom'
+      expect(Rack::DevMark.revision).to eq('custom')
     end
   end
 end

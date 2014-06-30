@@ -79,6 +79,25 @@ module MyApp
 end
 ```
 
+#### Heroku
+
+Since Heroku [uses production env for staging](https://devcenter.heroku.com/articles/multiple-environments). You can use this settings instead.
+
+```ruby
+module MyApp
+  class Application < Rails::Application
+    Rack::DevMark.env = ENV['RACK_DEV_MARK']
+    config.rack_dev_mark.enable = !Rails.env.production? || ENV['RACK_DEV_MARK']
+  end
+end
+```
+
+And set the environment variable.
+
+```bash
+heroku config:set RACK_DEV_MARK=staging
+```
+
 ## Custom Theme
 
 Create your own theme class inheriting `Rack::DevMark::Theme::Base`.
