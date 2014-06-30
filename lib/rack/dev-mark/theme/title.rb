@@ -9,6 +9,7 @@ module Rack
         end
 
         def insert_into(html)
+          env = @options[:env] || self.env
           s = env.to_s
           s = s.upcase if @options[:upcase]
           if @options[:type].to_s == 'postfix'
