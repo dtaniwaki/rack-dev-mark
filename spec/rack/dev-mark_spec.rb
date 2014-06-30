@@ -30,8 +30,8 @@ describe Rack::DevMark do
   end
   describe "::env=" do
     it "sets custom env" do
-      Rack::DevMark.env = 'custom'
-      expect(Rack::DevMark.env).to eq('custom')
+      subject.env = 'custom'
+      expect(subject.env).to eq('custom')
     end
   end
   describe "::revision" do
@@ -51,8 +51,8 @@ describe Rack::DevMark do
   end
   describe "::revision=" do
     it "sets custom revision" do
-      Rack::DevMark.revision = 'custom'
-      expect(Rack::DevMark.revision).to eq('custom')
+      subject.revision = 'custom'
+      expect(subject.revision).to eq('custom')
     end
   end
 end
