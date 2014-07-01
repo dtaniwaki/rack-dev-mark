@@ -17,8 +17,26 @@ module Rack
 
         end
 
+        private
+
         def stylesheet_link_tag(path)
           %Q~<style>#{::File.open(::File.join(::File.dirname(__FILE__), '../../../../vendor/assets/stylesheets', path)).read}</style>~
+        end
+
+        def gsub_tag_content(html, name, &block)
+          html.gsub %r{(<#{name}\s*[^>]*>)([^<]*)(</#{name}>)}i do
+            "#{$1}#{block.call($2)}#{$3}"
+          end
+        end
+
+        def gsub_tag_attribute(html, name, attr, &block)
+          html.gsub %r{(<#{name}\s*)([^>]*)(>)}i do
+            s1, s2, s3 = $1, $2, $3
+            s2 = s2.gsub %r{(#{attr}=["'])([^'"]*)(["'])} do
+              "#{$1}#{block.call($2)}#{$3}"
+            end
+            "#{s1}#{s2}#{s3}"
+          end
         end
       end
     end

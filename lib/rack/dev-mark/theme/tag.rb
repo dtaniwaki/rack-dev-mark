@@ -1,4 +1,3 @@
-require 'nokogiri'
 require 'rack/dev-mark/theme/base'
 
 module Rack
@@ -10,32 +9,28 @@ module Rack
         end
 
         def insert_into(html)
-          h = Nokogiri::XML.fragment(html)
-
           name = @options[:name]
 
           if name
-            h.css(name).each do |elem|
-              s = elem.content.to_s
-              elem.content = replace_string(s) if s != ''
+            html = gsub_tag_content html, name do |value|
+              env_with(value)
             end
           end
 
           if attribute = @options[:attribute]
             Array(attribute).each do |attr|
-              h.css("#{name}[#{attr}]").each do |elem|
-                s = elem[attr]
-                elem[attr] = replace_string(s) if s != ''
+              html = gsub_tag_attribute html, name, attr do |value|
+                env_with(value)
               end
             end
           end
 
-          html = h.to_xml(:save_with => Nokogiri::XML::Node::SaveOptions::AS_HTML)
+          html
         end
 
         private
 
-        def replace_string(org)
+        def env_with(org)
           s = env.to_s
           s = s.upcase if @options[:upcase]
 
