@@ -1,4 +1,4 @@
-require 'rack/dev-mark/theme/base'
+require 'rack/dev-mark/theme/tag'
 
 module Rack
   module DevMark
