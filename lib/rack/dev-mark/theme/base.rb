@@ -24,13 +24,13 @@ module Rack
         end
 
         def gsub_tag_content(html, name, &block)
-          html.gsub(%r{(<#{name}\s*[^>]*>)([^<]*)(</#{name}>)}i) do
+          String.new(html).gsub(%r{(<#{name}\s*[^>]*>)([^<]*)(</#{name}>)}i) do
             "#{$1}#{block.call($2)}#{$3}"
           end
         end
 
         def gsub_tag_attribute(html, name, attr, &block)
-          html.gsub %r{(<#{name}\s*)([^>]*)(>)}i do
+          String.new(html).gsub %r{(<#{name}\s*)([^>]*)(>)}i do
             s1, s2, s3 = $1, $2, $3
             s2.gsub! %r{(#{attr}=')([^']*)(')} do
               "#{$1}#{block.call($2)}#{$3}"
