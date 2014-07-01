@@ -20,13 +20,33 @@ module MyApp
 end
 ```
 
+## tag
+
+Insert the environment string into tags or attributes.
+
+e.g.
+
+`<div data-title="foo">foo</div>` can be `<div data-title="(env) foo">foo</div>`
+
+### options
+
+`type`: `prefix` (default) or `postfix`
+
+`upcase`: `true` or `false` (default)
+
+`name`: the name of tag to insert env
+
+`attribute`: the name of attribute to insert env
+
 ## title
 
-Just add the environment into the page title.
+Just add the environment string into the page title.
 
 e.g.
 
 `My Homepage` on development env will be `(development) My Homepage`
+
+options are the same as tag theme.
 
 ### options
 
