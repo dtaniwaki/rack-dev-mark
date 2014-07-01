@@ -26,7 +26,7 @@ module Rack
             begin
               new_body << insert_dev_marks(b)
             rescue => e
-              $stderr.write "Failed to insert dev marks: #{e.message}\n"
+              $stderr.write %Q|Failed to insert dev marks: #{e.message}\n  #{e.backtrace.join("  \n")}|
             end
           end
           response.close if response.respond_to?(:close)

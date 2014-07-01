@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_dependency "rack", ">= 1.1"
+  gem.add_dependency "nokogiri"
 
   gem.add_development_dependency "rake"
   gem.add_development_dependency "rspec", ">= 3.0"

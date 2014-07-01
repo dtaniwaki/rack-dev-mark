@@ -10,6 +10,7 @@ end
 
 RSpec.shared_examples "theme" do
   let (:src) { %Q~<html><head>head<title>title</title></head><body>body</body></html>~ }
+  let (:out) { %Q~<html><head>head<title>title</title></head><body>body</body></html>~ }
   it "inserts env mark" do
     expect(subject.insert_into(src)).to eq(out)
   end
