@@ -100,7 +100,7 @@ heroku config:set RACK_DEV_MARK=staging
 
 ## Custom Theme
 
-Create your own theme class inheriting `Rack::DevMark::Theme::Base`.
+Although the default themes are `title` and `github_fork_ribbon`, you can create your own themes inheriting `Rack::DevMark::Theme::Base`.
 
 ```ruby
 require 'rack/dev-mark/theme/base'
