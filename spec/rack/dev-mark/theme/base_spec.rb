@@ -26,6 +26,13 @@ describe Rack::DevMark::Theme::Base do
           expect(subject.send(:gsub_tag_content, input, 'a', &lambda{ |v| 'replaced' })).to eq(output)
         end
       end
+      context "for nested tags" do
+        let(:input) { %Q|<body><h1>head</h1><a href="something"><span>x</span></a><span>y</span></div>| }
+        let(:output) { %Q|<body><h1>head</h1><a href="something"><span>x</span></a><span>y</span></div>| }
+        it "does not replace a string" do
+          expect(subject.send(:gsub_tag_content, input, 'a', &lambda{ |v| 'replaced' })).to eq(output)
+        end
+      end
     end
     describe "#gsub_tag_attribute" do
       let(:input) { %Q|<body><h1>head</h1><a href="something" data-title="x" data-body="x">x</a><span data-title="y">y</span></div>| }
