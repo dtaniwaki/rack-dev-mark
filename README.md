@@ -1,6 +1,10 @@
 # rack-dev-mark
 
-[![Gem Version](https://badge.fury.io/rb/rack-dev-mark.svg)](http://badge.fury.io/rb/rack-dev-mark) [![Build Status](https://secure.travis-ci.org/dtaniwaki/rack-dev-mark.png)](http://travis-ci.org/dtaniwaki/rack-dev-mark) [![Coverage Status](https://coveralls.io/repos/dtaniwaki/rack-dev-mark/badge.png)](https://coveralls.io/r/dtaniwaki/rack-dev-mark) [![Code Climate](https://codeclimate.com/github/dtaniwaki/rack-dev-mark.png)](https://codeclimate.com/github/dtaniwaki/rack-dev-mark)
+[![Gem Version][gem-image]][gem-link]
+[![Dependency Status][deps-image]][deps-link]
+[![Build Status][build-image]][build-link]
+[![Coverage Status][cov-image]][cov-link]
+[![Code Climate][gpa-image]][gpa-link]
 
 Differentiate development environment from production.
 You can choose [themes](lib/rack/dev-mark/theme/README.md) to differentiate the page.
@@ -153,3 +157,18 @@ You can add any combination of themes. See more about [themes](lib/rack/dev-mark
 ## Copyright
 
 Copyright (c) 2014 Daisuke Taniwaki. See [LICENSE](LICENSE) for details.
+
+
+
+
+[gem-image]:   https://badge.fury.io/rb/rack-dev-mark.svg
+[gem-link]:    http://badge.fury.io/rb/rack-dev-mark
+[build-image]: https://secure.travis-ci.org/dtaniwaki/rack-dev-mark.png
+[build-link]:  http://travis-ci.org/dtaniwaki/rack-dev-mark
+[deps-image]:  https://gemnasium.com/dtaniwaki/rack-dev-mark.svg
+[deps-link]:   https://gemnasium.com/dtaniwaki/rack-dev-mark
+[cov-image]:   https://coveralls.io/repos/dtaniwaki/rack-dev-mark/badge.png
+[cov-link]:    https://coveralls.io/r/dtaniwaki/rack-dev-mark
+[gpa-image]:   https://codeclimate.com/github/dtaniwaki/rack-dev-mark.png
+[gpa-link]:    https://codeclimate.com/github/dtaniwaki/rack-dev-mark
+
