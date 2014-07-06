@@ -42,6 +42,8 @@ e.g.
 
 Just add the environment string into the page title.
 
+![title](misc/theme/title.png)
+
 e.g.
 
 `My Homepage` on development env will be `(development) My Homepage`
