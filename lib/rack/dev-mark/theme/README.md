@@ -58,7 +58,13 @@ options are the same as tag theme.
 
 ["Fork Me on GitHub" like ribbon](https://github.com/simonwhitaker/github-fork-ribbon-css) originally created by [simonwhitaker](https://github.com/simonwhitaker)
 
+It shows a banner of the environment on the ribbon.
+
 ![github_fork_ribbon](screenshots/github_fork_ribbon.png)
+
+It also shows deployment revision and timestamp on the tooltip if available.
+
+![github_fork_ribbon tooltip](screenshots/github_fork_ribbon_tooltip.png)
 
 ### options
 
