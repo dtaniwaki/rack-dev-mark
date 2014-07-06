@@ -1,5 +1,5 @@
 module Rack
   module DevMark
-    VERSION = '0.5.1'
+    VERSION = '0.6.0'
   end
 end
