@@ -7,7 +7,7 @@
 [![Code Climate][gpa-image]][gpa-link]
 
 Differentiate development environment from production.
-You can choose [themes](lib/rack/dev-mark/theme/README.md) to differentiate the page.
+You can choose [themes](THEME.md) to differentiate the page.
 
 ## Screenshot
 
@@ -144,7 +144,7 @@ module MyApp
 end
 ```
 
-You can add any combination of themes. See more about [themes](lib/rack/dev-mark/theme/README.md).
+You can add any combination of themes. See more about [themes](THEME.md).
 
 ## Contributing
 

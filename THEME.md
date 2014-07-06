@@ -60,11 +60,11 @@ options are the same as tag theme.
 
 It shows a banner of the environment on the ribbon.
 
-![github_fork_ribbon](screenshots/github_fork_ribbon.png)
+![github_fork_ribbon](misc/theme/github_fork_ribbon.png)
 
 It also shows deployment revision and timestamp on the tooltip if available.
 
-![github_fork_ribbon tooltip](screenshots/github_fork_ribbon_tooltip.png)
+![github_fork_ribbon tooltip](misc/theme/github_fork_ribbon_tooltip.png)
 
 ### options
 
