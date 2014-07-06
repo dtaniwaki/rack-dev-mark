@@ -30,13 +30,13 @@ Insert the environment string into tags or attributes.
 
 `Rack::DevMark::Theme::Tag.new(attribute: 'data-title')`
 
-`<div data-title="foo">foo</div>` be `<div data-title="(env) foo">foo</div>`
+`<div data-title="foo">foo</div>` will be `<div data-title="(env) foo">foo</div>`
 
 #### by attribute
 
 `Rack::DevMark::Theme::Tag.new(name: 'h1')`
 
-`<h1>foo</h1>` can be `<h1="foo">(env) foo</h1>`
+`<h1>foo</h1>` will be `<h1="foo">(env) foo</h1>`
 
 ### options
 
