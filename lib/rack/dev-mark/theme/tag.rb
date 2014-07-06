@@ -6,6 +6,7 @@ module Rack
       class Tag < Base
         def initialize(options = {})
           @options = options
+          super
         end
 
         def insert_into(html)
