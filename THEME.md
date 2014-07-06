@@ -24,9 +24,19 @@ end
 
 Insert the environment string into tags or attributes.
 
-e.g.
+### e.g.
 
-`<div data-title="foo">foo</div>` can be `<div data-title="(env) foo">foo</div>`
+#### by tag name
+
+`Rack::DevMark::Theme::Tag.new(attribute: 'data-title')`
+
+`<div data-title="foo">foo</div>` be `<div data-title="(env) foo">foo</div>`
+
+#### by attribute
+
+`Rack::DevMark::Theme::Tag.new(name: 'h1')`
+
+`<h1>foo</h1>` can be `<h1="foo">(env) foo</h1>`
 
 ### options
 
@@ -40,15 +50,11 @@ e.g.
 
 ## title
 
-Just add the environment string into the page title.
-
-![title](misc/theme/title.png)
-
-e.g.
+Subclass of tag theme specifically made for title tag. It just adds the environment string into the page title.
 
 `My Homepage` on development env will be `(development) My Homepage`
 
-options are the same as tag theme.
+![title](misc/theme/title.png)
 
 ### options
 
@@ -67,6 +73,8 @@ It shows a banner of the environment on the ribbon.
 It also shows deployment revision and timestamp on the tooltip if available.
 
 ![github_fork_ribbon tooltip](misc/theme/github_fork_ribbon_tooltip.png)
+
+Click the banner to remove it temporarily.
 
 ### options
 
