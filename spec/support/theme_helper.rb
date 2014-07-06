@@ -4,7 +4,7 @@ RSpec.shared_context "theme context" do
   end
 
   before do
-    subject.setup 'env', 'rev'
+    subject.setup 'env', 'rev', 'time'
   end
 end
 

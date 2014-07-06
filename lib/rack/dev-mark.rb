@@ -22,6 +22,14 @@ module Rack
     def self.revision=(revision)
       @revision = revision
     end
+
+    def self.timestamp
+      @timestamp ||= (::File.open('REVISION') { |f| f.ctime } rescue nil)
+    end
+
+    def self.timestamp=(timestamp)
+      @timestamp = timestamp
+    end
   end
 end
 

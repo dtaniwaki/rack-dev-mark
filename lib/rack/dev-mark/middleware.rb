@@ -8,7 +8,7 @@ module Rack
         @app = app
         @themes = [themes].flatten.map do |theme|
           theme = theme.is_a?(Symbol) ? Rack::DevMark::Theme.const_get(camelize(theme.to_s)).new : theme
-          theme.setup Rack::DevMark.env, Rack::DevMark.revision
+          theme.setup Rack::DevMark.env, Rack::DevMark.revision, Rack::DevMark.timestamp
           theme
         end
       end

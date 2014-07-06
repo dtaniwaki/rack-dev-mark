@@ -9,7 +9,7 @@ describe Rack::DevMark::Theme::Base do
   describe "subclass" do
     subject { Class.new(Rack::DevMark::Theme::Base).new }
     it "sets up" do
-      subject.setup 'env', 'rev'
+      subject.setup 'env', 'rev', 'time'
       expect(subject.env).to eq('env')
       expect(subject.revision).to eq('rev')
     end

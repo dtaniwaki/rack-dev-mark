@@ -2,15 +2,16 @@ module Rack
   module DevMark
     module Theme
       class Base
-        attr_reader :env, :revision
+        attr_reader :env, :revision, :timestamp
 
         def initialize(*args)
           raise RuntimeError, 'Abstract class can not be instantiated' if self.class == Rack::DevMark::Theme::Base
         end
 
-        def setup(env, revision)
+        def setup(env, revision, timestamp)
           @env = env
           @revision = revision
+          @timestamp = timestamp
         end
 
         def insert_into(html)
