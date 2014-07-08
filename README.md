@@ -44,7 +44,7 @@ run MyApp
 In `config/environments/development.rb`
 
 ```ruby
-MyApp::Application.configure do
+Rails.application.configure do
   config.rack_dev_mark.enable = true
 end
 ```
