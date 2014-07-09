@@ -55,4 +55,29 @@ describe Rack::DevMark do
       expect(subject.revision).to eq('custom')
     end
   end
+  describe "::timestamp" do
+    let(:time) { Time.new(2000, 1, 2) }
+    after do
+      ::File.delete('REVISION') if ::File.exists?('REVISION')
+      subject.instance_variable_set("@timestamp", nil)
+    end
+    it "returns timestamp" do
+      ::FileUtils.touch 'REVISION', mtime: time
+      expect(subject.timestamp).to eq(time)
+    end
+    it "returns nil if REVISION does not exist" do
+      expect(subject.timestamp).to eq(nil)
+    end
+  end
+  describe "::timestamp=" do
+    it "sets custom timestamp by string" do
+      subject.timestamp = '2014/3/1'
+      expect(subject.timestamp).to eq(Time.new(2014, 3, 1))
+    end
+
+    it "sets custom timestamp by time object" do
+      subject.timestamp = Time.new(2014, 4, 1)
+      expect(subject.timestamp).to eq(Time.new(2014, 4, 1))
+    end
+  end
 end

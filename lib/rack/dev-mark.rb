@@ -24,11 +24,11 @@ module Rack
     end
 
     def self.timestamp
-      @timestamp ||= (::File.open('REVISION') { |f| f.ctime } rescue nil)
+      @timestamp ||= (::File.open('REVISION') { |f| f.mtime } rescue nil)
     end
 
     def self.timestamp=(timestamp)
-      @timestamp = timestamp
+      @timestamp = timestamp.is_a?(Time) ? timestamp : Time.parse(timestamp)
     end
   end
 end
