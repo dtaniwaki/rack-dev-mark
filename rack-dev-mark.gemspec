@@ -7,8 +7,8 @@ Gem::Specification.new do |gem|
   gem.authors     = ["Daisuke Taniwaki"]
   gem.email       = ["daisuketaniwaki@gmail.com"]
   gem.homepage    = "https://github.com/dtaniwaki/rack-dev-mark"
-  gem.summary     = "Differentiate development environemt from production"
-  gem.description = "Differentiate development environemt from production"
+  gem.summary     = "Differentiate development environment from production"
+  gem.description = "Differentiate development environment from production"
   gem.license     = "MIT"
 
   gem.files       = `git ls-files`.split("\n")
