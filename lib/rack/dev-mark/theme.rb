@@ -5,6 +5,6 @@ module Rack
   end
 end
 
-Dir[File.join(File.dirname(__FILE__), 'theme', '*.rb')].each do |f|
+Dir[::File.join(::File.dirname(__FILE__), 'theme', '*.rb')].each do |f|
   require f
 end
