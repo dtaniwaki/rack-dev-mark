@@ -83,7 +83,7 @@ module MyApp
 end
 ```
 
-#### Heroku
+#### Rails on Heroku
 
 Since Heroku [uses production env for staging](https://devcenter.heroku.com/articles/multiple-environments). You can't use the settings above. However, the gem provide an easier way to set it up on Heroku. Just set the environment variable on the environment in which you want to show the mark.
 
