@@ -6,7 +6,7 @@ module Rack
       config.rack_dev_mark = ActiveSupport::OrderedOptions.new
 
       initializer "rack-dev-mark.configure_rails_initialization" do |app|
-        if app.config.rack_dev_mark.enable
+        if app.config.rack_dev_mark.enable || Rack::DevMark.rack_dev_mark_env
           racks = [ActionDispatch::ShowExceptions, Rack::DevMark::Middleware]
           if theme = app.config.rack_dev_mark.theme || app.config.rack_dev_mark.custom_theme
             racks << theme

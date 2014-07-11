@@ -85,22 +85,13 @@ end
 
 #### Heroku
 
-Since Heroku [uses production env for staging](https://devcenter.heroku.com/articles/multiple-environments). You can use this settings instead in `config/application.rb`.
-
-```ruby
-module MyApp
-  class Application < Rails::Application
-    Rack::DevMark.env = ENV['RACK_DEV_MARK']
-    config.rack_dev_mark.enable = !Rails.env.production? || ENV['RACK_DEV_MARK']
-  end
-end
-```
-
-And set the environment variable on Heroku app.
+Since Heroku [uses production env for staging](https://devcenter.heroku.com/articles/multiple-environments). You can't use the settings above. However, the gem provide an easier way to set it up on Heroku. Just set the environment variable on the environment in which you want to show the mark.
 
 ```bash
-heroku config:set RACK_DEV_MARK=staging
+heroku config:set RACK_DEV_MARK_ENV=staging
 ```
+
+That's it!
 
 ## Custom Theme
 

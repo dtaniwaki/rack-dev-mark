@@ -27,6 +27,12 @@ describe Rack::DevMark do
       ENV['RAILS_ENV'] = 'def'
       expect(subject.env).to eq('def')
     end
+    it "returns rack_dev_mark_env instead of rails_env" do
+      ENV['RACK_ENV'] = 'abc'
+      ENV['RAILS_ENV'] = 'def'
+      ENV['RACK_DEV_MARK_ENV'] = 'ghi'
+      expect(subject.env).to eq('ghi')
+    end
   end
   describe "::env=" do
     it "sets custom env" do
@@ -78,6 +84,20 @@ describe Rack::DevMark do
     it "sets custom timestamp by time object" do
       subject.timestamp = Time.new(2014, 4, 1)
       expect(subject.timestamp).to eq(Time.new(2014, 4, 1))
+    end
+  end
+  describe "::rack_dev_mark_env" do
+    it "returns nil" do
+      ENV['RACK_DEV_MARK_ENV'] = nil
+      expect(subject.rack_dev_mark_env).to eq(nil)
+    end
+    it "returns nil" do
+      ENV['RACK_DEV_MARK_ENV'] = ''
+      expect(subject.rack_dev_mark_env).to eq(nil)
+    end
+    it "returns custom value" do
+      ENV['RACK_DEV_MARK_ENV'] = 'abc'
+      expect(subject.env).to eq('abc')
     end
   end
 end
