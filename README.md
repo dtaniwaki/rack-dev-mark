@@ -85,7 +85,7 @@ end
 
 #### Heroku
 
-Since Heroku [uses production env for staging](https://devcenter.heroku.com/articles/multiple-environments). You can use this settings instead.
+Since Heroku [uses production env for staging](https://devcenter.heroku.com/articles/multiple-environments). You can use this settings instead in `config/application.rb`.
 
 ```ruby
 module MyApp
@@ -96,7 +96,7 @@ module MyApp
 end
 ```
 
-And set the environment variable.
+And set the environment variable on Heroku app.
 
 ```bash
 heroku config:set RACK_DEV_MARK=staging
