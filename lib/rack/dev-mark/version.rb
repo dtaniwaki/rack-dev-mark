@@ -1,5 +1,5 @@
 module Rack
   module DevMark
-    VERSION = '0.6.0'
+    VERSION = File.read(File.expand_path('../../../../VERSION', __FILE__)).to_s.strip
   end
 end
