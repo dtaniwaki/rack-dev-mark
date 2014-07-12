@@ -91,6 +91,20 @@ Since Heroku [uses production env for staging](https://devcenter.heroku.com/arti
 heroku config:set RACK_DEV_MARK_ENV=staging
 ```
 
+#### Use with Rack::Deflater
+
+If you use Rack::Deflater to gzip your HTML before sending it to the client, it is essential that you apply the dev mark *before* the content gets gzipped. Rack middleware order is a little counter-intuitive, but you ensure that the dev mark gets added by placing Rack::DevMark::Middleware *after* Rack::Deflater. You can ensure that Rack::DevMark is applied after Rack::Deflater with this configuration:
+
+```ruby
+# An environment file like staging.rb for an environment with Rack::Deflater.
+Rails.application.configure do
+  config.middleware.delete(Rack::DevMark::Middleware)
+  config.middleware.insert_after(Rack::Deflater, Rack::DevMark::Middleware)
+end
+```
+
+You'll want to be sure that you only try to reference Rack::Deflater middleware if the environment has it loaded, or else you'll raise an exception on app boot.
+
 That's it!
 
 ## Custom Theme
