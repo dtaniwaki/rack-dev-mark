@@ -10,7 +10,7 @@ shared_context 'forked spec' do
     end
     Process.waitpid2 pid
     res = Marshal.load(read)
-    example.example.send :set_exception, res if res && !res.empty?
+    example.example.send :set_exception, res if res && res.to_s != ''
     read.close
   end
 end
