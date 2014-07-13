@@ -45,5 +45,12 @@ end
       EOS
     end
   end
+
+  describe "#target_path (private)" do
+    subject { Rack::DevMark::InstallGenerator.new }
+    it "returns 'config/application.rb'" do
+      expect(subject.__send__(:target_path)).to eq('config/application.rb')
+    end
+  end
 end
 end
