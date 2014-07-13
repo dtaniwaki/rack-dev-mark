@@ -93,6 +93,22 @@ heroku config:set RACK_DEV_MARK_ENV=staging
 
 That's it!
 
+#### Custom Rack Middleware Order
+
+`rack-dev-mark` should be inserted before `ActionDispatch::ShowExceptions` becase we want to show the dev mark on the error pages as well. However, it does not work well if it's inserted by incorrect order with some other rack middlewares. So, it provides the setting of inserted place.
+
+```ruby
+module MyApp
+  class Application < Rails::Application
+    config.rack_dev_mark.insert_before = SomeOtherMiddleware
+  end
+end
+```
+
+`config.rack_dev_mark.insert_after` is also available to insert `rack-dev-mark` after a middleware.
+
+[Here](COMPATIBILITY.md) is the compatibility list which many people often ask.
+
 ## Custom Theme
 
 Although the default themes are `title` and `github_fork_ribbon`, you can create your own themes inheriting `Rack::DevMark::Theme::Base`.

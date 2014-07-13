@@ -15,7 +15,9 @@ describe Rack::DevMark::Railtie do
     end
     it 'inserts the middleware' do
       @app.initialize!
-      expect(@app.middleware.middlewares).to include(Rack::DevMark::Middleware)
+      middlewares = @app.middleware.middlewares
+      expect(middlewares).to include(Rack::DevMark::Middleware)
+      expect(middlewares.index(Rack::DevMark::Middleware)).to eq(middlewares.index(ActionDispatch::ShowExceptions) - 1)
     end
   end
   context "rack_dev_mark disable" do
@@ -56,6 +58,36 @@ describe Rack::DevMark::Railtie do
     it 'inserts the middleware' do
       @app.initialize!
       expect(theme).to receive(:setup)
+    end
+  end
+  context "rack_dev_mark insert_before" do
+    let(:dummy_middleware) { Class.new{ define_method(:initialize) { |_| }; define_method(:to_s) { 'Dummy' } } }
+    before do
+      @app.config.middleware.use dummy_middleware
+      @app.config.rack_dev_mark.enable = true
+      @app.config.rack_dev_mark.insert_before = dummy_middleware
+    end
+    it 'inserts the middleware before the other middleware' do
+      @app.initialize!
+      middlewares = @app.middleware.middlewares
+      expect(middlewares).to include(Rack::DevMark::Middleware)
+      expect(middlewares).to include(dummy_middleware)
+      expect(middlewares.index(Rack::DevMark::Middleware)).to eq(middlewares.index(dummy_middleware) - 1)
+    end
+  end
+  context "rack_dev_mark insert_after" do
+    let(:dummy_middleware) { Class.new{ define_method(:initialize) { |_| }; define_method(:to_s) { 'Dummy' } } }
+    before do
+      @app.config.middleware.use dummy_middleware
+      @app.config.rack_dev_mark.enable = true
+      @app.config.rack_dev_mark.insert_after = dummy_middleware
+    end
+    it 'inserts the middleware before the other middleware' do
+      @app.initialize!
+      middlewares = @app.middleware.middlewares
+      expect(middlewares).to include(Rack::DevMark::Middleware)
+      expect(middlewares).to include(dummy_middleware)
+      expect(middlewares.index(Rack::DevMark::Middleware)).to eq(middlewares.index(dummy_middleware) + 1)
     end
   end
 end
