@@ -15,8 +15,8 @@ module Rack
     # config.rack_dev_mark.theme = [:title, :github_fork_ribbon]
     # Customize inserted place of the middleware if necessary.
     # You can use either `insert_before` or `insert_after`
-    # config.rack_dev_mark.insert_before = SomeOtherMiddleware
-    # config.rack_dev_mark.insert_after = SomeOtherMiddleware
+    # config.rack_dev_mark.insert_before SomeOtherMiddleware
+    # config.rack_dev_mark.insert_after SomeOtherMiddleware
 
         EOS
         end

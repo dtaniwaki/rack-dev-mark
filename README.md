@@ -100,7 +100,7 @@ That's it!
 ```ruby
 module MyApp
   class Application < Rails::Application
-    config.rack_dev_mark.insert_before = SomeOtherMiddleware
+    config.rack_dev_mark.insert_before SomeOtherMiddleware
   end
 end
 ```

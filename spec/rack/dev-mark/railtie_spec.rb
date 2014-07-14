@@ -65,7 +65,7 @@ describe Rack::DevMark::Railtie do
     before do
       @app.config.middleware.use dummy_middleware
       @app.config.rack_dev_mark.enable = true
-      @app.config.rack_dev_mark.insert_before = dummy_middleware
+      @app.config.rack_dev_mark.insert_before dummy_middleware
     end
     it 'inserts the middleware before the other middleware' do
       @app.initialize!
@@ -80,7 +80,7 @@ describe Rack::DevMark::Railtie do
     before do
       @app.config.middleware.use dummy_middleware
       @app.config.rack_dev_mark.enable = true
-      @app.config.rack_dev_mark.insert_after = dummy_middleware
+      @app.config.rack_dev_mark.insert_after dummy_middleware
     end
     it 'inserts the middleware before the other middleware' do
       @app.initialize!

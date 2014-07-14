@@ -25,7 +25,7 @@ Of course, you can stick the `config.middleware.use Rack::Deflater` by the follo
 ```ruby
 module MyApp
   class Application < Rails::Application
-    config.rack_dev_mark.insert_after = Rack::Deflater
+    config.rack_dev_mark.insert_after Rack::Deflater
   end
 end
 ```
