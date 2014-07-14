@@ -6,8 +6,9 @@
 [![Coverage Status][cov-image]][cov-link]
 [![Code Climate][gpa-image]][gpa-link]
 
-Differentiate development environment from production.
-You can choose [themes](THEME.md) to differentiate the page.
+Differentiate development environment from production. You can choose [themes](THEME.md) to differentiate the page.
+
+The running sample is available [here](http://rack-dev-mark.herokuapp.com/).
 
 ## Screenshot
 
