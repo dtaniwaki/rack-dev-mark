@@ -31,5 +31,14 @@ require 'rack-dev-mark'
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
 
 RSpec.configure do |config|
+  config.before :each do
+    @rack_env = ENV['RACK_ENV']
+    @rails_env = ENV['RAILS_ENV']
+  end
+  config.after :each do
+    ENV['RACK_ENV'] = @rack_env
+    ENV['RAILS_ENV'] = @rails_env
+    Rack::DevMark.env = nil
+  end
 end
 

@@ -2,15 +2,6 @@ require 'spec_helper'
 
 describe Rack::DevMark do
   subject { Rack::DevMark }
-  before do
-    @rack_env = ENV['RACK_ENV']
-    @rails_env = ENV['RAILS_ENV']
-  end
-  after do
-    ENV['RACK_ENV'] = @rack_env
-    ENV['RAILS_ENV'] = @rails_env
-    subject.instance_variable_set("@env", nil)
-  end
   describe "::env" do
     it "returns development as default" do
       ENV['RAILS_ENV'] = nil
