@@ -10,29 +10,29 @@ describe Rack::DevMark::Theme::Tag do
     # No insert
   end
 
-  describe "#env_with" do
+  describe "#env_with_value" do
     context "upcase is true" do
       let(:options) { {upcase: true} }
       it "replace a string" do
-        expect(subject.send(:env_with, 'foo')).to eq('(ENV) foo')
+        expect(subject.send(:env_with_value, 'env', 'foo')).to eq('(ENV) foo')
       end
     end
     context "upcase is false" do
       let(:options) { {upcase: false} }
       it "replace a string" do
-        expect(subject.send(:env_with, 'foo')).to eq('(env) foo')
+        expect(subject.send(:env_with_value, 'env', 'foo')).to eq('(env) foo')
       end
     end
     context "type is prefix" do
       let(:options) { {type: 'prefix'} }
       it "replace a string" do
-        expect(subject.send(:env_with, 'foo')).to eq('(env) foo')
+        expect(subject.send(:env_with_value, 'env', 'foo')).to eq('(env) foo')
       end
     end
     context "type is postfix" do
       let(:options) { {type: 'postfix'} }
       it "replace a string" do
-        expect(subject.send(:env_with, 'foo')).to eq('foo (env)')
+        expect(subject.send(:env_with_value, 'env', 'foo')).to eq('foo (env)')
       end
     end
   end

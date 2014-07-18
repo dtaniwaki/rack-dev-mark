@@ -8,11 +8,6 @@ describe Rack::DevMark::Theme::Base do
   end
   describe "subclass" do
     subject { Class.new(Rack::DevMark::Theme::Base).new }
-    it "sets up" do
-      subject.setup 'env', 'rev', 'time'
-      expect(subject.env).to eq('env')
-      expect(subject.revision).to eq('rev')
-    end
     describe "#gsub_tag_content" do
       let(:input) { %Q|<body><h1>head</h1><a href="something">x</a><span></span>y</div>| }
       let(:output) { %Q|<body><h1>head</h1><a href="something">replaced</a><span></span>y</div>| }
