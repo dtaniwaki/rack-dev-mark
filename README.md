@@ -110,6 +110,21 @@ end
 
 [Here](COMPATIBILITY.md) is the compatibility list which many people often ask.
 
+## I18n Support
+
+Get i18n string with rack_dev_mark locale strings.
+
+e.g. In `config/locale/rack_dev_mark.ja.yml`
+
+```
+ja:
+  rack_dev_mark:
+    development: '開発中'
+    staging: 'ステージング'
+```
+
+Then, you will get translated string on the pages!
+
 ## Custom Theme
 
 Although the default themes are `title` and `github_fork_ribbon`, you can create your own themes inheriting `Rack::DevMark::Theme::Base`.
