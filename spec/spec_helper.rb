@@ -26,6 +26,13 @@ begin
   $stdout.write "* Rails has been loaded.\n"
 rescue LoadError
 end
+begin
+  require 'i18n'
+  $stdout.write "* I18n has been loaded.\n"
+  I18n.enforce_available_locales = true
+  I18n.available_locales = [:ja, :en]
+rescue LoadError
+end
 require 'rack-dev-mark'
 
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }

@@ -37,6 +37,11 @@ module Rack
         s.to_s == '' ? nil : s
       end
     end
+
+    if defined?(::I18n)
+      require 'rack/dev-mark/i18n_helper'
+      include I18nHelper
+    end
   end
 end
 
