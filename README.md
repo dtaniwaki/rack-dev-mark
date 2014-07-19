@@ -8,7 +8,7 @@
 
 Differentiate development environment from production. You can choose [themes](THEME.md) to differentiate the page.
 
-The running sample is available [here](http://rack-dev-mark.herokuapp.com/).
+The running sample is available [here](http://rack-dev-mark.dtaniwaki.com/).
 
 ## Screenshot
 
