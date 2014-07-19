@@ -118,14 +118,14 @@ Although the default themes are `title` and `github_fork_ribbon`, you can create
 require 'rack/dev-mark/theme/base'
 
 class NewTheme < Rack::DevMark::Theme::Base
-  def insert_into(html)
+  def insert_into(html, env, params = {})
     # Do something for your theme
     html
   end
 end
 
 class AnotherTheme < Rack::DevMark::Theme::Base
-  def insert_into(html)
+  def insert_into(html, env, params = {})
     # Do something for your theme
     html
   end
