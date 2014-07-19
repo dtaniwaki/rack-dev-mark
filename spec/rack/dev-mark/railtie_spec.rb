@@ -90,5 +90,15 @@ describe Rack::DevMark::Railtie do
       expect(middlewares.index(Rack::DevMark::Middleware)).to eq(middlewares.index(dummy_middleware) + 1)
     end
   end
+  context "rack_dev_mark env" do
+    before do
+      @app.config.rack_dev_mark.enable = true
+      @app.config.rack_dev_mark.env = 'something'
+    end
+    it 'sets the env string' do
+      @app.initialize!
+      expect(Rack::DevMark.env).to eq('something')
+    end
+  end
 end
 end

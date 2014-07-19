@@ -110,6 +110,17 @@ end
 
 [Here](COMPATIBILITY.md) is the compatibility list which many people often ask.
 
+#### Custom env string
+
+Set the custom env string maually.
+
+```ruby
+module MyApp
+  class Application < Rails::Application
+    config.rack_dev_mark.env = 'foo'
+  end
+end
+
 ## Custom Theme
 
 Although the default themes are `title` and `github_fork_ribbon`, you can create your own themes inheriting `Rack::DevMark::Theme::Base`.

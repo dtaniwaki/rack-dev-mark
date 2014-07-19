@@ -6,6 +6,8 @@ describe Rack::DevMark::RailsOptions do
   it do
     is_expected.to respond_to(:enable)
     is_expected.to respond_to(:enable=)
+    is_expected.to respond_to(:env)
+    is_expected.to respond_to(:env=)
     is_expected.to respond_to(:theme)
     is_expected.to respond_to(:theme=)
     is_expected.to respond_to(:insert_type)
