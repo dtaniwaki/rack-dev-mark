@@ -39,7 +39,7 @@ describe Rack::DevMark::Railtie do
     end
   end
   context "rack_dev_mark theme" do
-    let(:theme) { d = double setup: nil; allow(d).to receive(:insert_into){ |b| "#{b} dev-mark" }; d }
+    let(:theme) { d = double setup: nil; allow(d).to receive(:insert_into){ |b, _, _| "#{b} dev-mark" }; d }
     before do
       @app.config.rack_dev_mark.enable = true
       @app.config.rack_dev_mark.theme = [theme]
@@ -50,7 +50,7 @@ describe Rack::DevMark::Railtie do
     end
   end
   context "rack_dev_mark custom_theme alias" do
-    let(:theme) { d = double setup: nil; allow(d).to receive(:insert_into){ |b| "#{b} dev-mark" }; d }
+    let(:theme) { d = double setup: nil; allow(d).to receive(:insert_into){ |b, _, _| "#{b} dev-mark" }; d }
     before do
       @app.config.rack_dev_mark.enable = true
       @app.config.rack_dev_mark.custom_theme = [theme]
@@ -88,6 +88,16 @@ describe Rack::DevMark::Railtie do
       expect(middlewares).to include(Rack::DevMark::Middleware)
       expect(middlewares).to include(dummy_middleware)
       expect(middlewares.index(Rack::DevMark::Middleware)).to eq(middlewares.index(dummy_middleware) + 1)
+    end
+  end
+  context "rack_dev_mark env" do
+    before do
+      @app.config.rack_dev_mark.enable = true
+      @app.config.rack_dev_mark.env = 'something'
+    end
+    it 'sets the env string' do
+      @app.initialize!
+      expect(Rack::DevMark.env).to eq('something')
     end
   end
 end

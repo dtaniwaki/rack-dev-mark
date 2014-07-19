@@ -6,7 +6,7 @@ module Rack
     class Railtie < Rails::Railtie
       config.rack_dev_mark = RailsOptions.new
 
-      initializer "rack-dev-mark.configure_rails_initialization" do |app|
+      initializer "rack-dev-mark.insert_middleware" do |app|
         if app.config.rack_dev_mark.enable || Rack::DevMark.rack_dev_mark_env
           racks = []
 
@@ -20,6 +20,12 @@ module Rack
           end
 
           app.config.app_middleware.send(insert_method, *racks)
+        end
+      end
+
+      initializer "rack-dev-mark.set_env", after: "rack-dev-mark.insert_middleware" do |app|
+        if app.config.rack_dev_mark.enable || Rack::DevMark.rack_dev_mark_env
+          Rack::DevMark.env = app.config.rack_dev_mark.env
         end
       end
     end

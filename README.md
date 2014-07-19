@@ -8,7 +8,7 @@
 
 Differentiate development environment from production. You can choose [themes](THEME.md) to differentiate the page.
 
-The running sample is available [here](http://rack-dev-mark.herokuapp.com/).
+The running sample is available [here](http://rack-dev-mark.dtaniwaki.com/).
 
 ## Screenshot
 
@@ -110,6 +110,17 @@ end
 
 [Here](COMPATIBILITY.md) is the compatibility list which many people often ask.
 
+#### Custom env string
+
+Set the custom env string maually.
+
+```ruby
+module MyApp
+  class Application < Rails::Application
+    config.rack_dev_mark.env = 'foo'
+  end
+end
+
 ## I18n Support
 
 Get i18n string with rack_dev_mark locale strings.
@@ -133,14 +144,14 @@ Although the default themes are `title` and `github_fork_ribbon`, you can create
 require 'rack/dev-mark/theme/base'
 
 class NewTheme < Rack::DevMark::Theme::Base
-  def insert_into(html)
+  def insert_into(html, env, params = {})
     # Do something for your theme
     html
   end
 end
 
 class AnotherTheme < Rack::DevMark::Theme::Base
-  def insert_into(html)
+  def insert_into(html, env, params = {})
     # Do something for your theme
     html
   end

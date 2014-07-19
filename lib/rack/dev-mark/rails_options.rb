@@ -1,7 +1,7 @@
 module Rack
   module DevMark
     class RailsOptions
-      attr_accessor :enable, :theme
+      attr_accessor :env, :enable, :theme
 
       alias_method :custom_theme, :theme
       alias_method :custom_theme=, :theme=
