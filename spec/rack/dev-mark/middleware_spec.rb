@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe Rack::DevMark::Middleware do
@@ -5,10 +6,12 @@ describe Rack::DevMark::Middleware do
   let(:body) { ['response'] }
   let(:theme) { d = double setup: nil; allow(d).to receive(:insert_into){ |b| "#{b} dev-mark" }; d }
   let(:app) { double call: [200, headers, body] }
+  let(:env) { 'test' }
+  let(:revision) { 'rev' }
   subject { Rack::DevMark::Middleware.new(app, theme) }
   before do
-    allow(Rack::DevMark).to receive(:env).and_return('test')
-    allow(Rack::DevMark).to receive(:revision).and_return('rev')
+    allow(Rack::DevMark).to receive(:env).and_return(env)
+    allow(Rack::DevMark).to receive(:revision).and_return(revision)
   end
 
   it "inserts dev mark" do
@@ -17,9 +20,20 @@ describe Rack::DevMark::Middleware do
     expect(headers).to include('Content-Type' => 'text/html; charset=utf-8')
     expect(body).to eq(["response dev-mark"])
   end
-  it "adds http headers" do
-    _, headers, _ = subject.call({})
-    expect(headers).to include('X-Rack-Dev-Mark-Env' => 'test')
+  describe "http headers" do
+    context "ASCII env string" do
+      it "adds http headers" do
+        _, headers, _ = subject.call({})
+        expect(headers).to include('X-Rack-Dev-Mark-Env' => 'test')
+      end
+    end
+    context "Non ASCII string" do
+      let(:env) { 'テスト' }
+      it "adds http headers" do
+        _, headers, _ = subject.call({})
+        expect(headers).to include('X-Rack-Dev-Mark-Env' => '%E3%83%86%E3%82%B9%E3%83%88')
+      end
+    end
   end
   context "symbol theme" do
     let(:theme) { :title }
