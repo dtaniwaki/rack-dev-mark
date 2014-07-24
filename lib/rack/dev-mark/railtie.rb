@@ -6,6 +6,11 @@ module Rack
     class Railtie < Rails::Railtie
       config.rack_dev_mark = RailsOptions.new
 
+      initializer :load_custom_initializer, :before => :load_environment_config, :group => :all do
+        initializer = Rails.root.join("config", "initializers", "rack-dev-mark.rb")
+        require initializer if initializer.exist?
+      end
+
       initializer "rack-dev-mark.insert_middleware" do |app|
         if app.config.rack_dev_mark.enable || Rack::DevMark.rack_dev_mark_env
           racks = []
