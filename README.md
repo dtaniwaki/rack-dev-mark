@@ -120,6 +120,7 @@ module MyApp
     config.rack_dev_mark.env = 'foo'
   end
 end
+```
 
 ## I18n Support
 
