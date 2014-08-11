@@ -12,7 +12,7 @@ Differentiate development environment from production. You can choose [themes](T
 
 You can also try this gem on Heroku.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/dtaniwaki/rack-dev-mark-sample-app)
 
 ## Screenshot
 
