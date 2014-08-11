@@ -8,7 +8,11 @@
 
 Differentiate development environment from production. You can choose [themes](THEME.md) to differentiate the page.
 
-The running sample is available [here](http://rack-dev-mark.dtaniwaki.com/).
+[The running sample](http://rack-dev-mark.dtaniwaki.com/) is available.
+
+You can also try this gem on Heroku.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Screenshot
 
