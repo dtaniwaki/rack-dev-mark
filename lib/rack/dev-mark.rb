@@ -32,6 +32,14 @@ module Rack
         @timestamp = timestamp.is_a?(Time) ? timestamp : Time.parse(timestamp)
       end
 
+      def tmp_disabled
+        @tmp_disabled ||= false
+      end
+
+      def tmp_disabled=(v)
+        @tmp_disabled = !!v
+      end
+
       def rack_dev_mark_env
         s = ENV['RACK_DEV_MARK_ENV']
         s.to_s == '' ? nil : s

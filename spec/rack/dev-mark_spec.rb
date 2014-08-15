@@ -77,6 +77,22 @@ describe Rack::DevMark do
       expect(subject.timestamp).to eq(Time.new(2014, 4, 1))
     end
   end
+  describe "::tmp_disabled" do
+    it "returns false as default" do
+      expect(subject.tmp_disabled).to be false
+    end
+  end
+  describe "::tmp_disabled=" do
+    it "sets true" do
+      subject.tmp_disabled = true
+      expect(subject.tmp_disabled).to be true
+    end
+
+    it "sets other value as true" do
+      subject.tmp_disabled = 1
+      expect(subject.tmp_disabled).to be true
+    end
+  end
   describe "::rack_dev_mark_env" do
     it "returns nil" do
       ENV['RACK_DEV_MARK_ENV'] = nil

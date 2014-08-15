@@ -20,7 +20,7 @@ module Rack
 
         headers['X-Rack-Dev-Mark-Env'] = CGI.escape Rack::DevMark.env
 
-        if headers['Content-Type'].to_s =~ %r{\btext/html\b}i
+        if !Rack::DevMark.tmp_disabled && headers['Content-Type'].to_s =~ %r{\btext/html\b}i
           new_body = ''
           response.each do |b|
             begin

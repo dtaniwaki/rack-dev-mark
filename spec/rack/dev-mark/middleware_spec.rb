@@ -80,4 +80,15 @@ describe Rack::DevMark::Middleware do
       subject.call({})
     end
   end
+  context "tmp_disabled flag" do
+    before do
+      allow(Rack::DevMark).to receive(:tmp_disabled).and_return(true)
+    end
+    it "does not raise an exception but write it down in $stderr" do
+      status, headers, body = subject.call({})
+      expect(status).to eq(200)
+      expect(headers).to include('Content-Type' => 'text/html; charset=utf-8')
+      expect(body).to eq(["response"])
+    end
+  end
 end
