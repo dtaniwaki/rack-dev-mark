@@ -14,6 +14,8 @@ module Rack
       end
       
       def call(env)
+        Rack::DevMark.tmp_disabled = false
+
         status, headers, response = @app.call(env)
 
         headers = HeaderHash.new(headers)

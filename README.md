@@ -126,6 +126,26 @@ module MyApp
 end
 ```
 
+#### Temporarily disable the dev mark
+
+`skip_rack_dev_mark` controller helper works like `around_filter`.
+
+```ruby
+class FooController < ApplicationController
+  skip_rack_dev_mark except: [:iframe]
+
+  def index
+    # Do something
+  end
+
+  def iframe
+    # Do something
+  end
+end
+```
+
+In this case, only `index` action will insert the dev mark.
+
 ## I18n Support
 
 Get i18n string with rack_dev_mark locale strings.

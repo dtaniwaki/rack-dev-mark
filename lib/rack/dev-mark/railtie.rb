@@ -1,5 +1,6 @@
 require 'rails'
 require_relative 'rails_options'
+require_relative 'action_controller_helpers'
 
 module Rack
   module DevMark
@@ -17,6 +18,10 @@ module Rack
           racks << Rack::DevMark::Middleware
           if theme = app.config.rack_dev_mark.theme || app.config.rack_dev_mark.custom_theme
             racks << theme
+          end
+
+          ActiveSupport.on_load :action_controller do
+            include Rack::DevMark::ActionControllerHelpers
           end
 
           app.config.app_middleware.send(insert_method, *racks)

@@ -46,6 +46,7 @@ RSpec.configure do |config|
     ENV['RACK_ENV'] = @rack_env
     ENV['RAILS_ENV'] = @rails_env
     Rack::DevMark.env = nil
+    Rack::DevMark.tmp_disabled = nil
   end
 end
 
