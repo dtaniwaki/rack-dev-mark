@@ -20,10 +20,6 @@ module Rack
             racks << theme
           end
 
-          ActiveSupport.on_load :action_controller do
-            include Rack::DevMark::ActionControllerHelpers
-          end
-
           app.config.app_middleware.send(insert_method, *racks)
         end
       end
@@ -31,6 +27,12 @@ module Rack
       initializer "rack-dev-mark.set_env", after: "rack-dev-mark.insert_middleware" do |app|
         if app.config.rack_dev_mark.enable || Rack::DevMark.rack_dev_mark_env
           Rack::DevMark.env = app.config.rack_dev_mark.env
+        end
+      end
+
+      initializer "rack-dev-mark.load_controller_helpers", after: "rack-dev-mark.insert_middleware" do |app|
+        ActiveSupport.on_load :action_controller do
+          include Rack::DevMark::ActionControllerHelpers
         end
       end
     end
