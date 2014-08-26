@@ -132,7 +132,7 @@ end
 
 ```ruby
 class FooController < ApplicationController
-  skip_rack_dev_mark except: [:iframe]
+  skip_rack_dev_mark only: [:iframe]
 
   def index
     # Do something
