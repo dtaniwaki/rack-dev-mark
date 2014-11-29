@@ -16,7 +16,7 @@ env:
   - RAILS_VERSION=3.2.0
   - RAILS_VERSION=4.0.0
   - RAILS_VERSION=4.1.0
-  - RAILS_VERSION=4.2.0.beta4
+  - RAILS_VERSION=4.2.0.rc1
   - I18N_VERSION=0.6.0
 
 script: "bundle exec rake spec"
