@@ -222,12 +222,12 @@ Copyright (c) 2014 Daisuke Taniwaki. See [LICENSE](LICENSE) for details.
 
 [gem-image]:   https://badge.fury.io/rb/rack-dev-mark.svg
 [gem-link]:    http://badge.fury.io/rb/rack-dev-mark
-[build-image]: https://secure.travis-ci.org/dtaniwaki/rack-dev-mark.png
+[build-image]: https://secure.travis-ci.org/dtaniwaki/rack-dev-mark.svg
 [build-link]:  http://travis-ci.org/dtaniwaki/rack-dev-mark
 [deps-image]:  https://gemnasium.com/dtaniwaki/rack-dev-mark.svg
 [deps-link]:   https://gemnasium.com/dtaniwaki/rack-dev-mark
 [cov-image]:   https://coveralls.io/repos/dtaniwaki/rack-dev-mark/badge.png
 [cov-link]:    https://coveralls.io/r/dtaniwaki/rack-dev-mark
-[gpa-image]:   https://codeclimate.com/github/dtaniwaki/rack-dev-mark.png
+[gpa-image]:   https://codeclimate.com/github/dtaniwaki/rack-dev-mark.svg
 [gpa-link]:    https://codeclimate.com/github/dtaniwaki/rack-dev-mark
 
