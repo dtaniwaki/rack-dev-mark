@@ -44,6 +44,16 @@ use Rack::DevMark::Middleware
 run MyApp
 ```
 
+#### Middleman
+
+Add the settings in `config.rb`.
+
+```ruby
+require 'rack/dev-mark'
+Rack::DevMark.env = "Your Env"
+use Rack::DevMark::Middleware
+```
+
 ### For Rails App
 
 In `config/environments/development.rb`
