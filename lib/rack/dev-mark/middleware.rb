@@ -12,7 +12,7 @@ module Rack
         @revision = Rack::DevMark.revision
         @timestamp = Rack::DevMark.timestamp
       end
-      
+
       def call(env)
         Rack::DevMark.tmp_disabled = false
 
@@ -22,7 +22,8 @@ module Rack
 
         headers['X-Rack-Dev-Mark-Env'] = CGI.escape Rack::DevMark.env
 
-        if !Rack::DevMark.tmp_disabled && headers['Content-Type'].to_s =~ %r{\btext/html\b}i
+        redirect = 300 <= status.to_i && status.to_i < 400
+        if !redirect && !Rack::DevMark.tmp_disabled && headers['Content-Type'].to_s =~ %r{\btext/html\b}i
           new_body = ''
           response.each do |b|
             begin

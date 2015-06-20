@@ -4,8 +4,9 @@ require 'spec_helper'
 describe Rack::DevMark::Middleware do
   let(:headers) { {'Content-Type' => 'text/html; charset=utf-8'} }
   let(:body) { ['response'] }
+  let(:status) { 200 }
   let(:theme) { d = double setup: nil; allow(d).to receive(:insert_into){ |b| "#{b} dev-mark" }; d }
-  let(:app) { double call: [200, headers, body] }
+  let(:app) { double call: [status, headers, body] }
   let(:env) { 'test' }
   let(:revision) { 'rev' }
   subject { Rack::DevMark::Middleware.new(app, theme) }
@@ -89,6 +90,16 @@ describe Rack::DevMark::Middleware do
       expect(status).to eq(200)
       expect(headers).to include('Content-Type' => 'text/html; charset=utf-8')
       expect(body).to eq(["response"])
+    end
+  end
+  context "redirection" do
+    let(:status) { 302 }
+    let(:body) { ['<html><head></head><body></body></html>'] }
+    it "does not insert dev mark" do
+      status, headers, body = subject.call({})
+      expect(status).to eq(302)
+      expect(headers).to include('Content-Type' => 'text/html; charset=utf-8')
+      expect(body).to eq(['<html><head></head><body></body></html>'])
     end
   end
 end
