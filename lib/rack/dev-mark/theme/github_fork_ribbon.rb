@@ -29,7 +29,7 @@ module Rack
           EOS
           html.
             sub("</head>", "#{style_tag_str.strip}</head>").
-            sub /(<body[^>]*>)/i, "\\1#{div_tag_str.strip}"
+            sub(/(<body[^>]*>)/, "\\1#{div_tag_str.strip}")
         end
       end
     end
