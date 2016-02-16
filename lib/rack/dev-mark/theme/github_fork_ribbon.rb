@@ -27,9 +27,9 @@ module Rack
           div_tag_str = <<-EOS
 <div class="github-fork-ribbon-wrapper #{position}#{fixed}" onClick="this.style.display='none'" title="#{title}"><div class="github-fork-ribbon #{color}"><span class="github-fork-ribbon-text">#{env}</span></div></div>
           EOS
-          html
-            .sub('</head>', "#{style_tag_str.strip}</head>")
-            .sub %r{(<body[^>]*>)}i, "\\1#{div_tag_str.strip}"
+          html.
+            sub("</head>", "#{style_tag_str.strip}</head>").
+            sub /(<body[^>]*>)/i, "\\1#{div_tag_str.strip}"
         end
       end
     end
