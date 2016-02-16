@@ -17,19 +17,15 @@ module Rack
           title << timestamp if timestamp.to_s != ''
           title = title.join("&#10;")
 
-          style_tag_str = <<-EOS
-#{stylesheet_link_tag 'github-fork-ribbon-css/gh-fork-ribbon.css'}
+          s = <<-EOS
+#{stylesheet_link_tag "github-fork-ribbon-css/gh-fork-ribbon.css"}
 <!--[if lt IE 9]>
-#{stylesheet_link_tag 'github-fork-ribbon-css/gh-fork-ribbon.ie.css'}
+#{stylesheet_link_tag "github-fork-ribbon-css/gh-fork-ribbon.ie.css"}
 <![endif]-->
-          EOS
-
-          div_tag_str = <<-EOS
 <div class="github-fork-ribbon-wrapper #{position}#{fixed}" onClick="this.style.display='none'" title="#{title}"><div class="github-fork-ribbon #{color}"><span class="github-fork-ribbon-text">#{env}</span></div></div>
           EOS
-          html.
-            sub("</head>", "#{style_tag_str.strip}</head>").
-            sub(/(<body[^>]*>)/, "\\1#{div_tag_str.strip}")
+
+          html.sub %r{(<body[^>]*>)}i, "\\1#{s.strip}"
         end
       end
     end
