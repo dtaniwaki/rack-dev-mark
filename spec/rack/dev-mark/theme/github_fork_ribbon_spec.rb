@@ -5,7 +5,7 @@ describe Rack::DevMark::Theme::GithubForkRibbon do
   it_behaves_like "theme" do
     let :out do
       s = <<-EOS
-<html><head>head<title>title</title><style>#{read_stylesheet "github-fork-ribbon-css/gh-fork-ribbon.css"}</style>
+<html><head>head<title>title</title><style>#{read_stylesheet 'github-fork-ribbon-css/gh-fork-ribbon.css'}</style>
 <!--[if lt IE 9]>
 <style>#{read_stylesheet 'github-fork-ribbon-css/gh-fork-ribbon.ie.css'}</style>
 <![endif]--></head><body><div class="github-fork-ribbon-wrapper left" onClick="this.style.display='none'" title="rev&#10;time"><div class="github-fork-ribbon red"><span class="github-fork-ribbon-text">env</span></div></div>body</body></html>
