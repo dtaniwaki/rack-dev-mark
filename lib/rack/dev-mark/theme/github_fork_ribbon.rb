@@ -18,9 +18,9 @@ module Rack
           title = title.join("&#10;")
 
           style_tag_str = <<-EOS
-#{stylesheet_link_tag "github-fork-ribbon-css/gh-fork-ribbon.css"}
+#{stylesheet_link_tag 'github-fork-ribbon-css/gh-fork-ribbon.css'}
 <!--[if lt IE 9]>
-#{stylesheet_link_tag "github-fork-ribbon-css/gh-fork-ribbon.ie.css"}
+#{stylesheet_link_tag 'github-fork-ribbon-css/gh-fork-ribbon.ie.css'}
 <![endif]-->
           EOS
 
