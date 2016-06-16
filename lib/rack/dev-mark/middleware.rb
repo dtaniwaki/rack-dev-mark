@@ -33,7 +33,7 @@ module Rack
             end
           end
           response.close if response.respond_to?(:close)
-          headers['Content-Length'] &&= bytesize(new_body).to_s
+          headers['Content-Length'] &&= new_body.bytesize.to_s
           response = [new_body]
         end
 
