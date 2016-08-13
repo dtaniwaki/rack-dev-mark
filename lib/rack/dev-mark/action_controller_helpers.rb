@@ -3,7 +3,7 @@ module Rack
     module ActionControllerHelpers
       module ClassMethods
         def skip_rack_dev_mark(options = {})
-          before_filter options do
+          before_action options do
             disable_rack_dev_mark
           end
         end
