@@ -25,6 +25,23 @@ env:
   - RAILS_VERSION=4.2.0
   - I18N_VERSION=0.6.0
 
+matrix:
+  exclude:
+    - rvm: 2.4.0
+      env: RAILS_VERSION=3.2.0
+    - rvm: 2.4.0
+      env: RAILS_VERSION=4.0.0
+    - rvm: 2.4.0
+      env: RAILS_VERSION=4.1.0
+    - rvm: 2.4.0
+      env: RAILS_VERSION=4.2.0
+    - rvm: 2.1
+      env: RACK_VERSION=2.0.0
+    - rvm: 2.1
+      env:
+    - rvm: 2.1
+      env: I18N_VERSION=0.6.0
+
 script: "bundle exec rake spec"
 
 branches:
