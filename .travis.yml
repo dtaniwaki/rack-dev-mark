@@ -4,6 +4,7 @@ rvm:
   - 2.1
   - 2.2
   - 2.3
+  - 2.4.0
 
 install:
   - "gem install bundler"
@@ -17,11 +18,29 @@ env:
   - RACK_VERSION=1.4.0
   - RACK_VERSION=1.5.0
   - RACK_VERSION=1.6.0
+  - RACK_VERSION=2.0.0
   - RAILS_VERSION=3.2.0
   - RAILS_VERSION=4.0.0
   - RAILS_VERSION=4.1.0
   - RAILS_VERSION=4.2.0
   - I18N_VERSION=0.6.0
+
+matrix:
+  exclude:
+    - rvm: 2.4.0
+      env: RAILS_VERSION=3.2.0
+    - rvm: 2.4.0
+      env: RAILS_VERSION=4.0.0
+    - rvm: 2.4.0
+      env: RAILS_VERSION=4.1.0
+    - rvm: 2.4.0
+      env: RAILS_VERSION=4.2.0
+    - rvm: 2.1
+      env: RACK_VERSION=2.0.0
+    - rvm: 2.1
+      env:
+    - rvm: 2.1
+      env: I18N_VERSION=0.6.0
 
 script: "bundle exec rake spec"
 
