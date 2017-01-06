@@ -20,7 +20,7 @@ module Rack
             racks << theme
           end
 
-          app.config.app_middleware.send(insert_method, *racks)
+          app.config.middleware.send(insert_method, *racks)
         end
       end
 
