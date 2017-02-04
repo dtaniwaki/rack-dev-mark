@@ -1,6 +1,7 @@
 # rack-dev-mark
 
 [![Gem Version][gem-image]][gem-link]
+[![Download][download-image]][download-link]
 [![Dependency Status][deps-image]][deps-link]
 [![Build Status][build-image]][build-link]
 [![Coverage Status][cov-image]][cov-link]
@@ -232,6 +233,8 @@ Copyright (c) 2014 Daisuke Taniwaki. See [LICENSE](LICENSE) for details.
 
 [gem-image]:   https://badge.fury.io/rb/rack-dev-mark.svg
 [gem-link]:    http://badge.fury.io/rb/rack-dev-mark
+[download-image]:https://img.shields.io/gem/dt/rack-dev-mark.svg
+[download-link]:https://rubygems.org/gems/rack-dev-mark
 [build-image]: https://secure.travis-ci.org/dtaniwaki/rack-dev-mark.svg
 [build-link]:  http://travis-ci.org/dtaniwaki/rack-dev-mark
 [deps-image]:  https://gemnasium.com/dtaniwaki/rack-dev-mark.svg
