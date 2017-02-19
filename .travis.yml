@@ -27,7 +27,7 @@ env:
   - I18N_VERSION=0.6.0
 
 matrix:
-  exclude:
+  allow_failures:
     - rvm: 2.4.0
       env: RAILS_VERSION=3.2.0
     - rvm: 2.4.0
