@@ -3,7 +3,8 @@ language: ruby
 rvm:
   - 2.2
   - 2.3
-  - 2.4.0
+  - 2.4
+  - 2.5.0
 
 install:
   - "gem install bundler"
@@ -28,14 +29,14 @@ env:
 
 matrix:
   allow_failures:
-    - rvm: 2.4.0
-      env: RAILS_VERSION=3.2.0
-    - rvm: 2.4.0
+    - rvm: 2.4
       env: RAILS_VERSION=4.0.0
-    - rvm: 2.4.0
+    - rvm: 2.4
       env: RAILS_VERSION=4.1.0
-    - rvm: 2.4.0
-      env: RAILS_VERSION=4.2.0
+    - rvm: 2.5.0
+      env: RAILS_VERSION=4.0.0
+    - rvm: 2.5.0
+      env: RAILS_VERSION=4.1.0
 
 script: "bundle exec rake spec"
 
