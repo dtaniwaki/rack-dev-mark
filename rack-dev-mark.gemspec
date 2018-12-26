@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.require_paths = ['lib']
 
-  gem.required_ruby_version = ['>= 2.2', '< 2.6']
+  gem.required_ruby_version = ['>= 2.2', '< 2.7']
 
   gem.add_dependency "rack", ['>= 1.1', '< 2.1']
 
