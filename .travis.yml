@@ -4,9 +4,11 @@ rvm:
   - 2.3
   - 2.4
   - 2.5
+  - 2.6
 
 install:
-  - "gem install bundler"
+  - "gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true"
+  - "gem install bundler -v '< 2'"
   - "bundle install --jobs=3 --retry=3"
 
 env:
@@ -21,6 +23,7 @@ env:
   - RAILS_VERSION=4.2.0
   - RAILS_VERSION=5.0.0
   - RAILS_VERSION=5.1.0
+  - RAILS_VERSION=5.2.0
   - I18N_VERSION=0.6.0
 
 matrix:
@@ -32,6 +35,10 @@ matrix:
     - rvm: 2.5
       env: RAILS_VERSION=4.0.0
     - rvm: 2.5
+      env: RAILS_VERSION=4.1.0
+    - rvm: 2.6
+      env: RAILS_VERSION=4.0.0
+    - rvm: 2.6
       env: RAILS_VERSION=4.1.0
 
 script: "bundle exec rake spec"
