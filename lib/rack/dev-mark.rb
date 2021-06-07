@@ -33,11 +33,11 @@ module Rack
       end
 
       def tmp_disabled
-        @tmp_disabled ||= false
+        Thread.current[:"rack-dev-mark__tmp_disabled"] ||= false
       end
 
       def tmp_disabled=(v)
-        @tmp_disabled = !!v
+        Thread.current[:"rack-dev-mark__tmp_disabled"] = !!v
       end
 
       def rack_dev_mark_env
