@@ -1,5 +1,5 @@
 module Rack
   module DevMark
-    VERSION = ::File.read(::File.expand_path('../../../../VERSION', __FILE__)).to_s.strip
+    VERSION = '0.7.9'.freeze
   end
 end
