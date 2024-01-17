@@ -1,7 +1,5 @@
 require 'rubygems'
 require 'simplecov'
-require 'coveralls'
-Coveralls.wear!
 
 resultset_path = SimpleCov::ResultMerger.resultset_path
 FileUtils.rm resultset_path if File.exists? resultset_path
