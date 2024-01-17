@@ -2,7 +2,7 @@ require 'rubygems'
 require 'simplecov'
 
 resultset_path = SimpleCov::ResultMerger.resultset_path
-FileUtils.rm resultset_path if File.exists? resultset_path
+FileUtils.rm resultset_path if File.exist? resultset_path
 SimpleCov.use_merging true
 SimpleCov.at_exit do
   SimpleCov.command_name "fork-#{$$}"
