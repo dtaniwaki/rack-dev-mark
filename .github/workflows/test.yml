@@ -48,8 +48,6 @@ jobs:
       - name: Install dependencies
         env:
           RACK_VERSION: ${{ matrix.rack-version }}
-          RAILS_VERSION: ${{ matrix.rails-version }}
-          I18N_VERSION: ${{ matrix.i18n-version }}
         run: bundle install
       - name: Run tests
         run: bundle exec rake spec
@@ -95,9 +93,7 @@ jobs:
             bundle-use-ruby-${{ matrix.ruby-version }}-
       - name: Install dependencies
         env:
-          RACK_VERSION: ${{ matrix.rack-version }}
           RAILS_VERSION: ${{ matrix.rails-version }}
-          I18N_VERSION: ${{ matrix.i18n-version }}
         run: bundle install
       - name: Run tests
         run: bundle exec rake spec
@@ -128,8 +124,6 @@ jobs:
             bundle-use-ruby-${{ matrix.ruby-version }}-
       - name: Install dependencies
         env:
-          RACK_VERSION: ${{ matrix.rack-version }}
-          RAILS_VERSION: ${{ matrix.rails-version }}
           I18N_VERSION: ${{ matrix.i18n-version }}
         run: bundle install
       - name: Run tests
