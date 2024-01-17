@@ -12,34 +12,6 @@ jobs:
       matrix:
         ruby-version: ['3.3', '3.2', '3.1', '3.0', '2.7']
         rack-version: ['3.0.0', '2.2.0', '2.1.0', '2.0.0']
-        rails-version: ['7.1.0', '7.0.0', '6.1.0', '6.0.0']
-        i18n-version: ['1.14.0']
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Ruby ${{ matrix.ruby-version }}
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby-version }}
-      - uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: bundle-use-ruby-${{ matrix.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            bundle-use-ruby-${{ matrix.ruby-version }}-
-      - name: Install dependencies
-        env:
-          RACK_VERSION: ${{ matrix.rack-version }}
-        run: bundle install
-      - name: Run tests
-        run: bundle exec rake spec
-  rails-test:
-    runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        ruby-version: ['3.3', '3.2', '3.1', '3.0', '2.7']
-        rack-version: ['3.0.0', '2.2.0', '2.1.0', '2.0.0']
-        rails-version: ['7.1.0', '7.0.0', '6.1.0', '6.0.0']
-        i18n-version: ['1.14.0']
         include:
         - { ruby-version: '3.3', rack-version: '3.0.0' }
         - { ruby-version: '3.3', rack-version: '2.2.0' }
@@ -61,6 +33,34 @@ jobs:
         - { ruby-version: '2.7', rack-version: '2.2.0' }
         - { ruby-version: '2.7', rack-version: '2.1.0' }
         - { ruby-version: '2.7', rack-version: '2.0.0' }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby ${{ matrix.ruby-version }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: bundle-use-ruby-${{ matrix.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            bundle-use-ruby-${{ matrix.ruby-version }}-
+      - name: Install dependencies
+        env:
+          RACK_VERSION: ${{ matrix.rack-version }}
+          RAILS_VERSION: ${{ matrix.rails-version }}
+          I18N_VERSION: ${{ matrix.i18n-version }}
+        run: bundle install
+      - name: Run tests
+        run: bundle exec rake spec
+  rails-test:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: ['3.3', '3.2', '3.1', '3.0', '2.7']
+        rails-version: ['7.1.0', '7.0.0', '6.1.0', '6.0.0']
+        include:
         - { ruby-version: '3.3', rails-version: '7.1.0' }
         - { ruby-version: '3.3', rails-version: '7.0.0' }
         - { ruby-version: '3.3', rails-version: '6.1.0' }
@@ -81,6 +81,34 @@ jobs:
         - { ruby-version: '2.7', rails-version: '7.0.0' }
         - { ruby-version: '2.7', rails-version: '6.1.0' }
         - { ruby-version: '2.7', rails-version: '6.0.0' }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby ${{ matrix.ruby-version }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: bundle-use-ruby-${{ matrix.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            bundle-use-ruby-${{ matrix.ruby-version }}-
+      - name: Install dependencies
+        env:
+          RACK_VERSION: ${{ matrix.rack-version }}
+          RAILS_VERSION: ${{ matrix.rails-version }}
+          I18N_VERSION: ${{ matrix.i18n-version }}
+        run: bundle install
+      - name: Run tests
+        run: bundle exec rake spec
+  i18n-test:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: ['3.3', '3.2', '3.1', '3.0', '2.7']
+        i18n-version: ['1.14.0']
+        include:
         - { ruby-version: '3.3', i18n-version: '1.14.0' }
         - { ruby-version: '3.2', i18n-version: '1.14.0' }
         - { ruby-version: '3.1', i18n-version: '1.14.0' }
@@ -92,6 +120,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
+      - uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: bundle-use-ruby-${{ matrix.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            bundle-use-ruby-${{ matrix.ruby-version }}-
       - name: Install dependencies
         env:
           RACK_VERSION: ${{ matrix.rack-version }}
