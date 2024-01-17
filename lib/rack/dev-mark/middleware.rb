@@ -37,7 +37,7 @@ module Rack
           response = [new_body]
         end
 
-        [status, headers.to_h, response]
+        [status, headers, response]
       end
 
       private
