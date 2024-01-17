@@ -33,7 +33,7 @@ describe Rack::DevMark do
   end
   describe "::revision" do
     after do
-      ::File.delete('REVISION') if ::File.exists?('REVISION')
+      ::File.delete('REVISION') if ::File.exist?('REVISION')
       subject.instance_variable_set("@revision", nil)
     end
     it "returns revision" do
@@ -55,7 +55,7 @@ describe Rack::DevMark do
   describe "::timestamp" do
     let(:time) { Time.new(2000, 1, 2) }
     after do
-      ::File.delete('REVISION') if ::File.exists?('REVISION')
+      ::File.delete('REVISION') if ::File.exist?('REVISION')
       subject.instance_variable_set("@timestamp", nil)
     end
     it "returns timestamp" do

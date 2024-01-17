@@ -1,10 +1,8 @@
 require 'rubygems'
 require 'simplecov'
-require 'coveralls'
-Coveralls.wear!
 
 resultset_path = SimpleCov::ResultMerger.resultset_path
-FileUtils.rm resultset_path if File.exists? resultset_path
+FileUtils.rm resultset_path if File.exist? resultset_path
 SimpleCov.use_merging true
 SimpleCov.at_exit do
   SimpleCov.command_name "fork-#{$$}"
@@ -12,7 +10,6 @@ SimpleCov.at_exit do
 end
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
 ]
 SimpleCov.start do
   add_filter 'spec/'
