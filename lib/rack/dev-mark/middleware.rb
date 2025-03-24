@@ -24,7 +24,7 @@ module Rack
 
         redirect = 300 <= status.to_i && status.to_i < 400
         if !redirect && !Rack::DevMark.tmp_disabled && read_headers['Content-Type'].to_s =~ %r{\btext/html\b}i
-          new_body = ''
+          new_body = +''
           response.each do |b|
             begin
               new_body << insert_dev_marks(b)
