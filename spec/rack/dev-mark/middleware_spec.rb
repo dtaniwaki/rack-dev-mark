@@ -25,14 +25,14 @@ describe Rack::DevMark::Middleware do
     context "ASCII env string" do
       it "adds http headers" do
         _, headers, _ = subject.call({})
-        expect(headers).to include('X-Rack-Dev-Mark-Env' => 'test')
+        expect(headers).to include('x-rack-dev-mark-env' => 'test')
       end
     end
     context "Non ASCII string" do
       let(:env) { 'テスト' }
       it "adds http headers" do
         _, headers, _ = subject.call({})
-        expect(headers).to include('X-Rack-Dev-Mark-Env' => '%E3%83%86%E3%82%B9%E3%83%88')
+        expect(headers).to include('x-rack-dev-mark-env' => '%E3%83%86%E3%82%B9%E3%83%88')
       end
     end
   end
