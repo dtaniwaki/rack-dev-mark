@@ -20,7 +20,7 @@ module Rack
 
         read_headers = defined?(Rack::Headers) ? Rack::Headers.new(headers) : HeaderHash.new(headers)
 
-        headers['X-Rack-Dev-Mark-Env'] = CGI.escape Rack::DevMark.env
+        headers['x-rack-dev-mark-env'] = CGI.escape Rack::DevMark.env
 
         redirect = 300 <= status.to_i && status.to_i < 400
         if !redirect && !Rack::DevMark.tmp_disabled && read_headers['Content-Type'].to_s =~ %r{\btext/html\b}i
@@ -33,7 +33,7 @@ module Rack
             end
           end
           response.close if response.respond_to?(:close)
-          headers['Content-Length'] = new_body.bytesize.to_s if read_headers['Content-Length']
+          headers['content-length'] = new_body.bytesize.to_s if read_headers['Content-Length']
           response = [new_body]
         end
 
