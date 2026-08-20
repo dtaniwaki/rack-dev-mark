@@ -224,6 +224,17 @@ You can add any combination of themes. See more about [themes](THEME.md).
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new [Pull Request](../../pull/new/master)
 
+## Release
+
+With [gem-release](https://github.com/svenfuchs/gem-release):
+
+```bash
+bundle exec gem bump --version patch --tag --push
+bundle exec gem release
+```
+
+`--pretend` is not a dry run here: it has been observed to commit, tag, push and release for real.
+
 ## Copyright
 
 Copyright (c) 2014 Daisuke Taniwaki. See [LICENSE](LICENSE) for details.

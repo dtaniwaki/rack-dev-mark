@@ -1,0 +1,2 @@
+bump:
+  file: lib/rack/dev-mark/version.rb
